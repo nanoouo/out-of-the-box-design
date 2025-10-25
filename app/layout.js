@@ -2,8 +2,8 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 
 export const metadata = {
-  title: "YAROVA Design",
-  description: "Design d’intérieur ergonomique et moderne",
+  title: "OUT OF THE BOX Design Studio",
+  description: "Where every space is a masterpiece.From concept to full realization.",
 };
 
 export default function RootLayout({ children }) {
