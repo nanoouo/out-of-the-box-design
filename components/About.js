@@ -8,6 +8,7 @@ export default function About() {
       id="about"
       className="min-h-screen bg-white text-gray-900 flex flex-col items-center justify-center px-6 py-20"
     >
+        <br/>
       {/* === Titre principal === */}
       <h2 className="text-4xl sm:text-5xl font-bold text-center mb-4">
         About <span className="text-[#e8e56d]">Us</span>
