@@ -36,7 +36,7 @@ export default function MobileMenu({ open, onClose }) {
 
             {/* Liens */}
             <nav className="flex flex-col space-y-6 text-xl">
-              <Link href="#environ" onClick={onClose} className="hover:text-[#e8e56d] transition-colors">Environ</Link>
+              <Link href="#about" onClick={onClose} className="hover:text-[#e8e56d] transition-colors">About Us</Link>
               <Link href="#services" onClick={onClose} className="hover:text-[#e8e56d] transition-colors">Services</Link>
               <Link href="#portfolio" onClick={onClose} className="hover:text-[#e8e56d] transition-colors">Portefeuille</Link>
               <Link href="#etapes" onClick={onClose} className="hover:text-[#e8e56d] transition-colors">Étapes</Link>

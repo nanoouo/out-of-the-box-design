@@ -19,7 +19,9 @@ export default function Navbar() {
       <div className="hidden lg:flex items-center justify-center py-6 px-16 max-w-[1300px] mx-auto">
         {/* Liens à gauche */}
         <nav className="flex-1 flex justify-end space-x-10 text-lg font-medium text-gray-300">
-          <Link href="#environ" className="hover:text-white transition">Environ</Link>
+          <Link href="#about" className="hover:text-[#e8e56d] transition">
+            About Us
+          </Link>
           <Link href="#services" className="hover:text-white transition">Services</Link>
           <Link href="#portfolio" className="hover:text-white transition">Portefeuille</Link>
         </nav>
