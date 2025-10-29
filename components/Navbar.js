@@ -7,7 +7,6 @@ import MobileMenu from "./MobileMenu";
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
-  // Bloquer le scroll quand le menu mobile est ouvert
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
   }, [open]);
@@ -15,7 +14,7 @@ export default function Navbar() {
   const leftLinks = [
     { label: "About Us", href: "#about" },
     { label: "Services", href: "#services" },
-    { label: "Portfolio", href: "#portfolio" },
+    { label: "Expertise", href: "#expertise" },
   ];
 
   const rightLinks = [
@@ -27,7 +26,6 @@ export default function Navbar() {
   const linkClasses =
     "relative text-[#e8e56d] hover:text-white transition-colors duration-300 group";
 
-  // Smooth scroll + déclenche animation
   const scrollToSection = (e, href) => {
     e.preventDefault();
     const id = href.replace("#", "");
@@ -36,21 +34,20 @@ export default function Navbar() {
 
     section.scrollIntoView({ behavior: "smooth", block: "start" });
 
-    // Déclenche l'animation après scroll
     setTimeout(() => {
       window.dispatchEvent(new CustomEvent("sectionChange", { detail: id }));
     }, 500);
 
-    // Ferme le menu mobile si ouvert
     setOpen(false);
   };
 
   return (
     <header className="w-full bg-[#0f0f0f] fixed top-0 z-50 shadow-md">
       {/* DESKTOP */}
-      <div className="hidden lg:flex items-center justify-center py-6 px-16 max-w-[1300px] mx-auto">
+      <div className="hidden lg:flex items-center justify-center py-6 relative max-w-[1300px] mx-auto px-16">
+        
         {/* Left links */}
-        <nav className="flex-1 flex justify-end space-x-10 text-lg font-medium">
+        <nav className="flex space-x-10 absolute left-0">
           {leftLinks.map((link, i) => (
             <a
               key={i}
@@ -64,9 +61,9 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Logo */}
+        {/* Logo (centré) */}
         <div
-          className="px-12 cursor-pointer"
+          className="cursor-pointer"
           onClick={(e) => scrollToSection(e, "#hero")}
         >
           <Image
@@ -80,7 +77,7 @@ export default function Navbar() {
         </div>
 
         {/* Right links */}
-        <nav className="flex-1 flex justify-start space-x-10 text-lg font-medium">
+        <nav className="flex space-x-10 absolute right-0">
           {rightLinks.map((link, i) => (
             <a
               key={i}
@@ -97,7 +94,6 @@ export default function Navbar() {
 
       {/* MOBILE */}
       <div className="flex lg:hidden items-center justify-between px-5 sm:px-8 md:px-10 py-3 bg-[#0f0f0f]/95 backdrop-blur-md">
-        {/* Logo */}
         <Image
           src="/logo2.png"
           alt="Out of the Box"
@@ -106,8 +102,6 @@ export default function Navbar() {
           className="object-contain brightness-125 cursor-pointer"
           onClick={(e) => scrollToSection(e, "#hero")}
         />
-
-        {/* Hamburger */}
         <button
           aria-label="Open menu"
           aria-expanded={open}
@@ -118,7 +112,6 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Menu mobile */}
       <MobileMenu open={open} onClose={() => setOpen(false)} />
     </header>
   );

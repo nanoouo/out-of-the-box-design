@@ -1,18 +1,22 @@
-import Hero from "@/components/Hero";
-import About from "@/components/About";
-import Services from "@/components/Services";
+"use client";
 
-export default function Home() {
+import Hero from "../components/Hero";
+import About from "../components/About";
+import Services from "../components/Services";
+import Expertise from "../components/Expertise";
+import Navbar from "../components/Navbar";
+
+export default function HomePage() {
   return (
-    <main>
-      <Hero />
-     <About /> 
-     <Services/>
-     
-
-      <section id="contact" className="max-w-[1200px] mx-auto px-6 py-20">
-        <h2 className="text-2xl font-bold mb-6">Contact</h2>
-      </section>
-    </main>
+    <>
+      <Navbar />
+      <main className="pt-[4.5rem]"> {/* Décalage pour navbar fixe */}
+        <Hero />
+        <About />
+        <Services />
+        <Expertise />
+        {/* Ajouter Contact ou Footer si nécessaire */}
+      </main>
+    </>
   );
 }
