@@ -6,9 +6,8 @@ export default function Home() {
   return (
     <main>
       <Hero />
-
      <About /> 
-      <Services/>
+     <Services/>
      
 
       <section id="contact" className="max-w-[1200px] mx-auto px-6 py-20">

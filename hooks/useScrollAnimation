@@ -1,0 +1,40 @@
+"use client";
+
+import { useEffect, useState, useRef } from "react";
+
+export function useScrollAnimation(threshold = 0.5) {
+  const [animate, setAnimate] = useState(false);
+  const sectionRef = useRef(null);
+
+  // 🔹 IntersectionObserver pour scroll up/down
+  useEffect(() => {
+    if (!sectionRef.current) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setAnimate(entry.isIntersecting && entry.intersectionRatio >= threshold);
+        });
+      },
+      { threshold: [threshold] }
+    );
+
+    observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, [threshold]);
+
+  // 🔹 Replay animation via navbar
+  useEffect(() => {
+    const handleSectionChange = (e) => { // ← TypeScript annotation supprimée
+      if (e.detail === sectionRef.current?.id) {
+        setAnimate(false);
+        requestAnimationFrame(() => setAnimate(true));
+      }
+    };
+
+    window.addEventListener("sectionChange", handleSectionChange);
+    return () => window.removeEventListener("sectionChange", handleSectionChange);
+  }, []);
+
+  return { sectionRef, animate, setAnimate };
+}
