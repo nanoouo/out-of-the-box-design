@@ -2,10 +2,10 @@
 
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Star } from "lucide-react";
 
-export default function TestimonialsGrid() {
+export default function TestimonialsCarouselLoop() {
   const { sectionRef, animate } = useScrollAnimation(0.3);
   const [formData, setFormData] = useState({
     name: "",
@@ -55,7 +55,7 @@ export default function TestimonialsGrid() {
       id="testimonials"
       ref={sectionRef}
       className="relative w-full bg-gradient-to-b from-[#111] via-[#1a1a1a] to-[#222] text-white px-6 py-32 sm:py-36 overflow-hidden"
-      style={{ scrollMarginTop: "6rem" }} // espace pour navbar
+      style={{ scrollMarginTop: "6rem" }}
     >
       {/* === Section Title === */}
       <motion.h2
@@ -74,38 +74,40 @@ export default function TestimonialsGrid() {
         transition={{ duration: 0.8, delay: 0.4 }}
       />
 
-      {/* === Testimonials Grid === */}
-      <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto mb-16"
-        initial={{ opacity: 0 }}
-        animate={animate ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.8, delay: 0.6 }}
-      >
-        {allTestimonials.map((t, idx) => (
-          <div
-            key={idx}
-            className="bg-[#1a1a1a]/80 backdrop-blur-md rounded-3xl p-6 sm:p-8 shadow-lg flex flex-col justify-between"
-          >
-            <p className="text-gray-200 leading-relaxed mb-4">"{t.message}"</p>
+      {/* === Infinite Carousel === */}
+      <div className="overflow-hidden relative mb-16">
+        <motion.div
+          className="flex gap-6"
+          animate={{ x: ["0%", "-100%"] }}
+          transition={{
+            x: { repeat: Infinity, repeatType: "loop", duration: 30, ease: "linear" },
+          }}
+        >
+          {[...allTestimonials, ...allTestimonials].map((t, idx) => (
+            <div
+              key={idx}
+              className="flex-shrink-0 w-[80%] sm:w-[45%] md:w-[30%] bg-[#1a1a1a]/80 backdrop-blur-md rounded-3xl p-6 sm:p-8 shadow-lg flex flex-col justify-between"
+            >
+              <p className="text-gray-200 leading-relaxed mb-4">"{t.message}"</p>
 
-            {/* Stars */}
-            <div className="flex justify-center mb-3">
-              {Array.from({ length: 5 }, (_, i) => (
-                <Star
-                  key={i}
-                  size={20}
-                  className={i < t.rating ? "text-[#f9e65c]" : "text-gray-600"}
-                />
-              ))}
+              <div className="flex justify-center mb-3">
+                {Array.from({ length: 5 }, (_, i) => (
+                  <Star
+                    key={i}
+                    size={20}
+                    className={i < t.rating ? "text-[#f9e65c]" : "text-gray-600"}
+                  />
+                ))}
+              </div>
+
+              <h3 className="text-[#f9e65c] font-semibold text-lg text-center">
+                {t.name}
+              </h3>
+              <p className="text-gray-400 text-sm text-center">{t.role}</p>
             </div>
-
-            <h3 className="text-[#f9e65c] font-semibold text-lg text-center">
-              {t.name}
-            </h3>
-            <p className="text-gray-400 text-sm text-center">{t.role}</p>
-          </div>
-        ))}
-      </motion.div>
+          ))}
+        </motion.div>
+      </div>
 
       {/* === Form for new testimonial === */}
       <motion.div
