@@ -2,16 +2,18 @@
 
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Star } from "lucide-react";
 
 export default function TestimonialsCarouselLoop() {
   const { sectionRef, animate } = useScrollAnimation(0.3);
+
   const [formData, setFormData] = useState({
     name: "",
     rating: 5,
     message: "",
   });
+
   const [submittedTestimonials, setSubmittedTestimonials] = useState([]);
 
   const testimonials = [
@@ -86,7 +88,10 @@ export default function TestimonialsCarouselLoop() {
           {[...allTestimonials, ...allTestimonials].map((t, idx) => (
             <div
               key={idx}
-              className="flex-shrink-0 w-[80%] sm:w-[45%] md:w-[30%] bg-[#1a1a1a]/80 backdrop-blur-md rounded-3xl p-6 sm:p-8 shadow-lg flex flex-col justify-between"
+              className="flex-shrink-0 w-[80%] sm:w-[45%] md:w-[30%] 
+                         bg-[#1a1a1a]/80 backdrop-blur-md rounded-3xl p-6 sm:p-8 
+                         shadow-lg flex flex-col justify-between 
+                         border border-[#f9e65c33] transition-transform duration-300 hover:scale-105"
             >
               <p className="text-gray-200 leading-relaxed mb-4">"{t.message}"</p>
 
