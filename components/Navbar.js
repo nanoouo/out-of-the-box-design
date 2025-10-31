@@ -11,20 +11,18 @@ export default function Navbar() {
     document.body.style.overflow = open ? "hidden" : "";
   }, [open]);
 
-  const leftLinks = [
-    { label: "About Us", href: "#about" },
+  // ✅ Nouveau menu desktop
+  const links = [
+    { label: "Interiors", href: "#interiors" },
     { label: "Services", href: "#services" },
-    { label: "Expertise", href: "#expertise" },
-  ];
-
-  const rightLinks = [
-    { label: "Steps", href: "#steps" },
-    { label: "Pricing", href: "#pricing" },
+    { label: "Shop", href: "#shop" },
+    { label: "About", href: "#about" },
+    { label: "What Clients Say About Us!", href: "#testimonials" },
     { label: "Contact", href: "#contact" },
   ];
 
   const linkClasses =
-    "relative text-[#e8e56d] hover:text-white transition-colors duration-300 group";
+    "relative text-[#e8e56d] hover:text-white transition-colors duration-300 group font-medium tracking-wide";
 
   const scrollToSection = (e, href) => {
     e.preventDefault();
@@ -42,43 +40,29 @@ export default function Navbar() {
   };
 
   return (
-    <header className="w-full bg-[#0f0f0f] fixed top-0 z-50 shadow-md">
-      {/* DESKTOP */}
-      <div className="hidden lg:flex items-center justify-center py-6 relative max-w-[1300px] mx-auto px-16">
+    <header className="w-full fixed top-0 z-50 bg-[#0f0f0f]/95 backdrop-blur-md shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+      
+      {/* DESKTOP NAV */}
+      <div className="hidden md:flex items-center justify-between max-w-[1400px] mx-auto px-6 lg:px-16 py-4">
         
-        {/* Left links */}
-        <nav className="flex space-x-10 absolute left-0">
-          {leftLinks.map((link, i) => (
-            <a
-              key={i}
-              href={link.href}
-              onClick={(e) => scrollToSection(e, link.href)}
-              className={linkClasses}
-            >
-              {link.label}
-              <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
-            </a>
-          ))}
-        </nav>
-
-        {/* Logo (centré) */}
+        {/* Left Section (Logo) */}
         <div
-          className="cursor-pointer"
+          className="cursor-pointer flex-shrink-0"
           onClick={(e) => scrollToSection(e, "#hero")}
         >
           <Image
             src="/logo2.png"
-            alt="Out of the Box"
-            width={160}
-            height={60}
-            className="object-contain brightness-125"
+            alt="Out of the Box Logo"
+            width={150}
+            height={55}
+            className="object-contain brightness-125 hover:scale-105 transition-transform duration-300"
             priority
           />
         </div>
 
-        {/* Right links */}
-        <nav className="flex space-x-10 absolute right-0">
-          {rightLinks.map((link, i) => (
+        {/* Centered Links */}
+        <nav className="flex flex-wrap justify-center items-center gap-8 xl:gap-10 text-sm lg:text-base">
+          {links.map((link, i) => (
             <a
               key={i}
               href={link.href}
@@ -92,8 +76,8 @@ export default function Navbar() {
         </nav>
       </div>
 
-      {/* MOBILE */}
-      <div className="flex lg:hidden items-center justify-between px-5 sm:px-8 md:px-10 py-3 bg-[#0f0f0f]/95 backdrop-blur-md">
+      {/* MOBILE NAV */}
+      <div className="flex md:hidden items-center justify-between px-5 sm:px-8 py-3">
         <Image
           src="/logo2.png"
           alt="Out of the Box"

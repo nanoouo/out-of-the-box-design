@@ -1,108 +1,86 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 
 export default function About() {
-  const { sectionRef, animate } = useScrollAnimation(0.5); // threshold 0.5
+  const { sectionRef, animate } = useScrollAnimation(0.4);
 
   return (
     <section
       ref={sectionRef}
       id="about"
-      className="min-h-screen bg-white text-gray-900 flex flex-col items-center justify-center px-6 py-20 overflow-hidden"
-      style={{ scrollMarginTop: "5rem" }} // ← Décalage pour navbar fixe
+      className="relative min-h-screen bg-[#0f0f0f] text-white flex flex-col items-center justify-center px-6 py-24 overflow-hidden"
+      style={{ scrollMarginTop: "5rem" }}
     >
-      {/* Title */}
-      <motion.h2
-        className="text-4xl sm:text-5xl font-bold text-center mb-4"
-        initial={{ opacity: 0, y: 40 }}
-        animate={animate ? { opacity: 1, y: 0 } : { opacity: 0 }}
-        transition={{ delay: 0.2, duration: 0.6 }}
-      >
-        About <span className="text-[#e8e56d]">Us</span>
-      </motion.h2>
+      {/* === Background === */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-[#1a1a1a] to-black opacity-90"></div>
 
-      {/* Subtitle */}
-      <motion.p
-        className="text-lg sm:text-xl text-gray-600 text-center mb-10"
-        initial={{ opacity: 0, y: 20 }}
-        animate={animate ? { opacity: 1, y: 0 } : { opacity: 0 }}
-        transition={{ delay: 0.4, duration: 0.8 }}
-      >
-        Creating Interiors That Inspire
-      </motion.p>
-
-      {/* Image */}
+      {/* === Section Title === */}
       <motion.div
-        className="flex flex-col items-center"
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: -30 }}
         animate={animate ? { opacity: 1, y: 0 } : { opacity: 0 }}
-        transition={{ delay: 0.6, duration: 0.8 }}
+        transition={{ duration: 0.8 }}
+        className="relative z-10 text-center mb-16"
       >
-        <HoverableImage />
-        <p className="mt-4 text-gray-500 text-sm italic">
-          Interior Designer, Artist, Creative Director
-        </p>
+        <h2 className="text-4xl sm:text-5xl font-bold">
+          About <span className="text-[#e8e56d]">Us</span>
+        </h2>
       </motion.div>
 
-      {/* Line */}
-      <motion.hr
-        className="w-24 border-t-2 border-gray-300 my-10 origin-center"
-        initial={{ scaleX: 0 }}
-        animate={animate ? { scaleX: 1 } : { scaleX: 0 }}
-        transition={{ delay: 0.8, duration: 0.8 }}
-      />
+      {/* === Content Grid === */}
+      <div className="relative z-10 max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        
+        {/* LEFT: Image & Role */}
+        <motion.div
+          initial={{ opacity: 0, x: -60 }}
+          animate={animate ? { opacity: 1, x: 0 } : { opacity: 0 }}
+          transition={{ duration: 0.8 }}
+          className="flex flex-col items-center text-center space-y-6"
+        >
+          {/* Moved this line here 👇 */}
+          <p className="text-lg sm:text-xl text-gray-400 uppercase tracking-wide">
+            THE FOUNDER – CEO PRINCIPLE DESIGNER
+          </p>
 
-      {/* Description */}
-      <motion.div
-        className="max-w-4xl text-center text-gray-700 leading-relaxed space-y-4"
-        initial={{ opacity: 0, y: 20 }}
-        animate={animate ? { opacity: 1, y: 0 } : { opacity: 0 }}
-        transition={{ delay: 1, duration: 0.8 }}
-      >
-        <p>
-          We believe that true luxury lies in the details. Our team of designers,
-          craftsmen, and installers works closely with each client — whether a
-          homeowner, builder, architect, or developer — to bring visions to life
-          with precision, elegance, and enduring quality.
-        </p>
-        <p>
-          From custom kitchens and cabinetry to full-home interiors, every project
-          is meticulously planned and executed, ensuring a harmonious balance of
-          form, function, and sophistication.
-        </p>
-      </motion.div>
+          <div className="relative w-64 h-80 sm:w-80 sm:h-[440px] rounded-2xl overflow-hidden border-4 border-[#c5a46d] shadow-[0_8px_30px_rgba(0,0,0,0.6)]">
+            <Image
+              src="/profile-about.jpg"
+              alt="Founder Portrait"
+              fill
+              className="object-cover object-center transition-all duration-700 hover:scale-105"
+            />
+          </div>
+
+          <h6 className="text-2xl font-serif text-white">Angie Wetzel</h6>
+          <div className="w-16 h-[2px] bg-[#e8e56d] mx-auto"></div>
+          <p className="text-gray-300 italic">
+            Interior Designer, Artist, Creative Director
+          </p>
+        </motion.div>
+
+        {/* RIGHT: Description */}
+        <motion.div
+          initial={{ opacity: 0, x: 60 }}
+          animate={animate ? { opacity: 1, x: 0 } : { opacity: 0 }}
+          transition={{ delay: 0.2, duration: 0.8 }}
+          className="text-gray-200 text-base leading-relaxed font-light space-y-6"
+        >
+          <p>
+            We believe that true luxury lies in the details. Our team of designers,
+            craftsmen, and installers works closely with each client — whether a
+            homeowner, builder, architect, or developer — to bring visions to life
+            with precision, elegance, and enduring quality.
+          </p>
+
+          <p>
+            From custom kitchens and cabinetry to full-home interiors, every project
+            is meticulously planned and executed, ensuring a harmonious balance of
+            form, function, and sophistication.
+          </p>
+        </motion.div>
+      </div>
     </section>
-  );
-}
-
-// ✅ Image hover/touch animation
-function HoverableImage() {
-  const [isActive, setIsActive] = useState(false);
-
-  return (
-    <div
-      className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-2xl overflow-hidden shadow-2xl transition-all duration-700 ease-in-out group"
-      onTouchStart={() => setIsActive(true)}
-      onTouchEnd={() => setIsActive(false)}
-    >
-      <Image
-        src="/profile-about.jpg"
-        alt="Interior Designer Portrait"
-        fill
-        className={`object-cover object-center transition-all duration-700 ease-in-out
-          ${isActive
-            ? "grayscale-0 scale-110 brightness-110"
-            : "grayscale group-hover:grayscale-0 group-hover:scale-110 group-hover:brightness-110"
-          }`}
-      />
-      <div
-        className={`absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent transition-opacity duration-700
-          ${isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}
-      ></div>
-    </div>
   );
 }
