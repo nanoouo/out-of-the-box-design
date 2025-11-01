@@ -53,7 +53,7 @@ export default function About() {
             />
           </div>
 
-          <h6 className="text-2xl font-serif text-white">Angie Wetzel</h6>
+          <h6 className="text-2xl font-serif text-white">Fatima Ezahrae Aouayna</h6>
           <div className="w-16 h-[2px] bg-[#e8e56d] mx-auto"></div>
           <p className="text-gray-300 italic">
             Interior Designer, Artist, Creative Director
