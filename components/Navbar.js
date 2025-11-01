@@ -1,23 +1,35 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 import MobileMenu from "./MobileMenu";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(false);
+  const closeTimeoutRef = useRef(null);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
   }, [open]);
 
-  // ✅ Nouveau menu desktop
   const links = [
-    { label: "Interiors", href: "#interiors" },
-    { label: "Services", href: "#services" },
-    { label: "Shop", href: "#shop" },
     { label: "About", href: "#about" },
+    {
+      label: "Services",
+      dropdown: [
+        { label: "Luxury Custom Home Design", href: "#service-1" },
+        { label: "Initial Design Consultation", href: "#service-2" },
+        { label: "Interior Virtual Design", href: "#service-3" },
+        { label: "Feature Wall Design", href: "#service-4" },
+        { label: "Outdoor Design", href: "#service-5" },
+      ],
+    },
+    { label: "What We Do ", href: "#interiors" },
+    
     { label: "What Clients Say About Us!", href: "#testimonials" },
+    { label: "Shop", href: "#shop" },
     { label: "Contact", href: "#contact" },
   ];
 
@@ -29,23 +41,26 @@ export default function Navbar() {
     const id = href.replace("#", "");
     const section = document.getElementById(id);
     if (!section) return;
-
     section.scrollIntoView({ behavior: "smooth", block: "start" });
-
-    setTimeout(() => {
-      window.dispatchEvent(new CustomEvent("sectionChange", { detail: id }));
-    }, 500);
-
     setOpen(false);
+  };
+
+  const handleMouseEnter = () => {
+    if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
+    setOpenDropdown(true);
+  };
+
+  const handleMouseLeave = () => {
+    closeTimeoutRef.current = setTimeout(() => {
+      setOpenDropdown(false);
+    }, 400); // 0.4 second delay before hiding
   };
 
   return (
     <header className="w-full fixed top-0 z-50 bg-[#0f0f0f]/95 backdrop-blur-md shadow-[0_0_15px_rgba(0,0,0,0.5)]">
-      
       {/* DESKTOP NAV */}
       <div className="hidden md:flex items-center justify-between max-w-[1400px] mx-auto px-6 lg:px-16 py-4">
-        
-        {/* Left Section (Logo) */}
+        {/* Logo */}
         <div
           className="cursor-pointer flex-shrink-0"
           onClick={(e) => scrollToSection(e, "#hero")}
@@ -62,17 +77,50 @@ export default function Navbar() {
 
         {/* Centered Links */}
         <nav className="flex flex-wrap justify-center items-center gap-8 xl:gap-10 text-sm lg:text-base">
-          {links.map((link, i) => (
-            <a
-              key={i}
-              href={link.href}
-              onClick={(e) => scrollToSection(e, link.href)}
-              className={linkClasses}
-            >
-              {link.label}
-              <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
-            </a>
-          ))}
+          {links.map((link, i) =>
+            link.dropdown ? (
+              <div
+                key={i}
+                className="relative"
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+              >
+                <button
+                  className={`${linkClasses} focus:outline-none`}
+                  onClick={() => setOpenDropdown(!openDropdown)}
+                >
+                  {link.label}
+                  <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+                </button>
+
+                {/* Dropdown */}
+                {openDropdown && (
+                  <div className="absolute left-0 mt-3 w-64 bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl shadow-lg overflow-hidden">
+                    {link.dropdown.map((item, idx) => (
+                      <a
+                        key={idx}
+                        href={item.href}
+                        onClick={(e) => scrollToSection(e, item.href)}
+                        className="block px-4 py-3 text-sm text-[#e8e56d] hover:bg-[#2a2a2a] hover:text-white transition-all"
+                      >
+                        {item.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ) : (
+              <a
+                key={i}
+                href={link.href}
+                onClick={(e) => scrollToSection(e, link.href)}
+                className={linkClasses}
+              >
+                {link.label}
+                <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+              </a>
+            )
+          )}
         </nav>
       </div>
 

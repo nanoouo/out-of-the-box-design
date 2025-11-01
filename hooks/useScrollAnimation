@@ -6,29 +6,30 @@ export function useScrollAnimation(threshold = 0.5) {
   const [animate, setAnimate] = useState(false);
   const sectionRef = useRef(null);
 
-  // 🔹 IntersectionObserver pour scroll up/down
+  // ✅ Trigger animation when section enters viewport (only once)
   useEffect(() => {
-    if (!sectionRef.current) return;
+    const section = sectionRef.current;
+    if (!section) return;
 
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          setAnimate(entry.isIntersecting && entry.intersectionRatio >= threshold);
-        });
+      ([entry]) => {
+        if (entry.isIntersecting && entry.intersectionRatio >= threshold) {
+          setAnimate(true);
+        }
       },
-      { threshold: [threshold] }
+      { threshold }
     );
 
-    observer.observe(sectionRef.current);
+    observer.observe(section);
     return () => observer.disconnect();
   }, [threshold]);
 
-  // 🔹 Replay animation via navbar
+  // ✅ Replay animation when navigating via navbar event
   useEffect(() => {
-    const handleSectionChange = (e) => { // ← TypeScript annotation supprimée
+    const handleSectionChange = (e) => {
       if (e.detail === sectionRef.current?.id) {
         setAnimate(false);
-        requestAnimationFrame(() => setAnimate(true));
+        setTimeout(() => setAnimate(true), 100); // smooth restart
       }
     };
 
@@ -36,5 +37,5 @@ export function useScrollAnimation(threshold = 0.5) {
     return () => window.removeEventListener("sectionChange", handleSectionChange);
   }, []);
 
-  return { sectionRef, animate, setAnimate };
+  return { sectionRef, animate };
 }
