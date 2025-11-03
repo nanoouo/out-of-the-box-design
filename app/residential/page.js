@@ -52,7 +52,7 @@ export default function ResidentialPage() {
               href="/#interiors"
               className="inline-block px-6 py-3 bg-[#f9e65c] text-black font-semibold rounded-full hover:bg-[#fff06d] transition-all duration-300"
             >
-              ← Back to Interiors
+              ← Back to Waht We Do
             </Link>
           </div>
         </motion.div>
