@@ -60,26 +60,39 @@ export default function About() {
           </p>
         </motion.div>
 
-        {/* RIGHT: Description */}
-        <motion.div
-          initial={{ opacity: 0, x: 60 }}
-          animate={animate ? { opacity: 1, x: 0 } : { opacity: 0 }}
-          transition={{ delay: 0.2, duration: 0.8 }}
-          className="text-gray-200 text-base leading-relaxed font-light space-y-6"
-        >
-          <p>
-            We believe that true luxury lies in the details. Our team of designers,
-            craftsmen, and installers works closely with each client — whether a
-            homeowner, builder, architect, or developer — to bring visions to life
-            with precision, elegance, and enduring quality.
-          </p>
+{/* RIGHT: Description */}
+<motion.div
+  initial={{ opacity: 0, x: 60 }}
+  animate={animate ? { opacity: 1, x: 0 } : { opacity: 0 }}
+  transition={{ delay: 0.2, duration: 0.8 }}
+  className="text-gray-200 text-base leading-relaxed font-light space-y-6"
+>
+  <p>
+    With a Master’s degree in Architecture and Interior Design, I’ve spent over a
+    decade transforming spaces with intention, emotion, and artistry — across the
+    East Coast, from New York to Miami.
+  </p>
 
-          <p>
-            From custom kitchens and cabinetry to full-home interiors, every project
-            is meticulously planned and executed, ensuring a harmonious balance of
-            form, function, and sophistication.
-          </p>
-        </motion.div>
+  <p>
+    Rooted in my Moroccan heritage and shaped by a French sensibility, my work
+    blends culture and contemporary design to craft luxury environments that
+    transcend aesthetics — they transform the way you feel and live.
+  </p>
+
+  <p>
+    As an artist and as the founder of <strong>The Good Sinner</strong>, my
+    transformational life coaching platform, I extend that same philosophy beyond
+    design — guiding others to rebuild from within, to find beauty in imperfection,
+    and to live authentically.
+  </p>
+
+  <p>
+    Whether through space or spirit, my mission is the same: to create extraordinary
+    transformations that awaken the senses, elevate the soul, and celebrate the art
+    of becoming.
+  </p>
+</motion.div>
+
       </div>
     </section>
   );
