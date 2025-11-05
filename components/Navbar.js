@@ -16,7 +16,7 @@ export default function Navbar() {
 
   const links = [
     { label: "About", href: "#about" },
-    { label: "Areas We Serve ", href: "#serve" },
+    { label: "Areas We Serve ", href: "#service-areas" },
     { label: "What We Do ", href: "#interiors" },
     {
       label: "Services",
