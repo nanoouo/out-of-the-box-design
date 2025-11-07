@@ -1,22 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
+import { useState } from "react";
+import dynamic from "next/dynamic";
 
-// --- Petit composant utilitaire pour animer le déplacement ---
-function MapUpdater({ center }) {
-  const map = useMap();
-
-  useEffect(() => {
-    map.flyTo(center, 9, {
-      duration: 1.5, // durée en secondes de l'animation
-      easeLinearity: 0.25,
-    });
-  }, [center, map]);
-
-  return null;
-}
+const ServiceAreasMap = dynamic(() => import("./ServiceAreasMap"), {
+  ssr: false, // 🚫 Empêche le rendu côté serveur
+});
 
 export default function ServiceAreas() {
   const regions = [
@@ -82,7 +71,6 @@ export default function ServiceAreas() {
       id="service-areas"
       className="min-h-screen bg-gradient-to-b from-[#111] via-[#1a1a1a] to-[#222] text-white px-6 py-24 md:px-12 lg:px-24 flex flex-col items-center"
     >
-      {/* Titre */}
       <header className="text-center mb-10">
         <h1 className="text-4xl sm:text-5xl font-extrabold text-[#f9e65c] mb-3 uppercase tracking-widest">
           Service Areas
@@ -92,7 +80,6 @@ export default function ServiceAreas() {
         </p>
       </header>
 
-      {/* Contenu principal */}
       <div className="flex flex-col-reverse md:flex-row gap-10 md:gap-16 w-full max-w-7xl items-center justify-center">
         {/* Liste régions */}
         <aside className="w-full md:w-1/3 space-y-8">
@@ -124,28 +111,13 @@ export default function ServiceAreas() {
           ))}
         </aside>
 
-        {/* Carte Leaflet */}
+        {/* Carte chargée dynamiquement */}
         <section className="w-full md:w-2/3 space-y-6">
-          <MapContainer
+          <ServiceAreasMap
             center={selectedRegion.center}
-            zoom={9}
-            className="h-[450px] w-full rounded-2xl z-0"
-            scrollWheelZoom={false}
-          >
-            <TileLayer
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              attribution='© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-            />
+            name={selectedRegion.name}
+          />
 
-            {/* Focus animé */}
-            <MapUpdater center={selectedRegion.center} />
-
-            <Marker position={selectedRegion.center}>
-              <Popup>{selectedRegion.name}</Popup>
-            </Marker>
-          </MapContainer>
-
-          {/* Description région */}
           <div>
             <h2 className="text-2xl font-bold text-[#f9e65c]">
               {selectedRegion.name}
