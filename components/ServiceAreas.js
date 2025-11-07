@@ -1,18 +1,28 @@
 "use client";
 
-import { useState, useCallback } from "react";
-import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
+import { useState, useEffect } from "react";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+
+// --- Petit composant utilitaire pour animer le déplacement ---
+function MapUpdater({ center }) {
+  const map = useMap();
+
+  useEffect(() => {
+    map.flyTo(center, 9, {
+      duration: 1.5, // durée en secondes de l'animation
+      easeLinearity: 0.25,
+    });
+  }, [center, map]);
+
+  return null;
+}
 
 export default function ServiceAreas() {
-  const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
-  });
-
   const regions = [
     {
       name: "Northern Virginia",
-      center: { lat: 38.8048, lng: -77.0469 },
-      zoom: 8,
+      center: [38.8048, -77.0469],
       description:
         "Serving Alexandria, Arlington, Fairfax, and the greater Northern Virginia area — within a 40-mile radius of Washington, D.C.",
       cities: [
@@ -30,40 +40,35 @@ export default function ServiceAreas() {
     },
     {
       name: "Washington, D.C.",
-      center: { lat: 38.9072, lng: -77.0369 },
-      zoom: 11,
+      center: [38.9072, -77.0369],
       description:
         "Our design expertise extends across Washington, D.C. — offering modern and luxury interiors in the capital’s most iconic neighborhoods.",
       cities: ["Georgetown", "Capitol Hill", "Dupont Circle", "Adams Morgan"],
     },
     {
       name: "Maryland",
-      center: { lat: 39.0458, lng: -76.6413 },
-      zoom: 9,
+      center: [39.0458, -76.6413],
       description:
         "We serve select Maryland communities including Bethesda, Chevy Chase, and Rockville — where timeless design meets comfort.",
       cities: ["Bethesda", "Chevy Chase", "Rockville", "Potomac"],
     },
     {
       name: "Miami, Florida",
-      center: { lat: 25.7617, lng: -80.1918 },
-      zoom: 9,
+      center: [25.7617, -80.1918],
       description:
         "In South Florida, we specialize in coastal luxury — elegant, open, and filled with natural light.",
       cities: ["Miami", "Coral Gables", "Fort Lauderdale", "Palm Beach"],
     },
     {
       name: "New York",
-      center: { lat: 40.7128, lng: -74.006 },
-      zoom: 9,
+      center: [40.7128, -74.006],
       description:
         "From Manhattan to Long Island, we serve the greater New York metropolitan area with bespoke interior design services.",
       cities: ["Manhattan", "Brooklyn", "Queens", "Bronx", "Long Island"],
     },
     {
       name: "New Jersey",
-      center: { lat: 40.0583, lng: -74.4057 },
-      zoom: 8,
+      center: [40.0583, -74.4057],
       description:
         "Our New Jersey projects blend craftsmanship and luxury across cities like Jersey City, Hoboken, and Princeton.",
       cities: ["Jersey City", "Hoboken", "Newark", "Princeton", "Paramus"],
@@ -71,21 +76,6 @@ export default function ServiceAreas() {
   ];
 
   const [selectedRegion, setSelectedRegion] = useState(regions[0]);
-
-  const containerStyle = {
-    width: "100%",
-    height: "450px",
-    borderRadius: "20px",
-  };
-
-  const onLoad = useCallback(
-    (map) => {
-      const bounds = new window.google.maps.LatLngBounds();
-      bounds.extend(selectedRegion.center);
-      map.fitBounds(bounds);
-    },
-    [selectedRegion]
-  );
 
   return (
     <section
@@ -102,7 +92,7 @@ export default function ServiceAreas() {
         </p>
       </header>
 
-      {/* Layout responsive */}
+      {/* Contenu principal */}
       <div className="flex flex-col-reverse md:flex-row gap-10 md:gap-16 w-full max-w-7xl items-center justify-center">
         {/* Liste régions */}
         <aside className="w-full md:w-1/3 space-y-8">
@@ -134,36 +124,28 @@ export default function ServiceAreas() {
           ))}
         </aside>
 
-        {/* Carte Google */}
+        {/* Carte Leaflet */}
         <section className="w-full md:w-2/3 space-y-6">
-          {isLoaded ? (
-            <GoogleMap
-              mapContainerStyle={containerStyle}
-              center={selectedRegion.center}
-              zoom={selectedRegion.zoom}
-              onLoad={onLoad}
-              options={{
-                disableDefaultUI: false,
-                gestureHandling: "greedy",
-                styles: [
-                  { elementType: "geometry", stylers: [{ color: "#1d2c4d" }] },
-                  {
-                    elementType: "labels.text.fill",
-                    stylers: [{ color: "#8ec3b9" }],
-                  },
-                  {
-                    elementType: "labels.text.stroke",
-                    stylers: [{ color: "#1a3646" }],
-                  },
-                ],
-              }}
+          <MapContainer
+            center={selectedRegion.center}
+            zoom={9}
+            className="h-[450px] w-full rounded-2xl z-0"
+            scrollWheelZoom={false}
+          >
+            <TileLayer
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              attribution='© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             />
-          ) : (
-            <div className="h-[450px] flex items-center justify-center text-gray-400">
-              Loading Map...
-            </div>
-          )}
 
+            {/* Focus animé */}
+            <MapUpdater center={selectedRegion.center} />
+
+            <Marker position={selectedRegion.center}>
+              <Popup>{selectedRegion.name}</Popup>
+            </Marker>
+          </MapContainer>
+
+          {/* Description région */}
           <div>
             <h2 className="text-2xl font-bold text-[#f9e65c]">
               {selectedRegion.name}

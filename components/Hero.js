@@ -86,7 +86,7 @@ export default function Hero() {
                 className="mb-6 flex flex-col items-center text-center"
               >
                 <Image
-                  src="/logo.png"
+                  src="/logo0.png"
                   alt="Out of the Box Design Studio"
                   width={450}
                   height={240}
