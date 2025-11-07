@@ -66,7 +66,7 @@ export default function Navbar() {
           onClick={(e) => scrollToSection(e, "#hero")}
         >
           <Image
-            src="/logo2.png"
+            src="/logo0.png"
             alt="Out of the Box Logo"
             width={150}
             height={55}
@@ -127,7 +127,7 @@ export default function Navbar() {
       {/* MOBILE NAV */}
       <div className="flex md:hidden items-center justify-between px-5 sm:px-8 py-3">
         <Image
-          src="/logo2.png"
+          src="/logo0.png"
           alt="Out of the Box"
           width={120}
           height={45}

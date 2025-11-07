@@ -29,6 +29,30 @@ export default function ServiceAreas() {
       ],
     },
     {
+      name: "Washington, D.C.",
+      center: { lat: 38.9072, lng: -77.0369 },
+      zoom: 11,
+      description:
+        "Our design expertise extends across Washington, D.C. — offering modern and luxury interiors in the capital’s most iconic neighborhoods.",
+      cities: ["Georgetown", "Capitol Hill", "Dupont Circle", "Adams Morgan"],
+    },
+    {
+      name: "Maryland",
+      center: { lat: 39.0458, lng: -76.6413 },
+      zoom: 9,
+      description:
+        "We serve select Maryland communities including Bethesda, Chevy Chase, and Rockville — where timeless design meets comfort.",
+      cities: ["Bethesda", "Chevy Chase", "Rockville", "Potomac"],
+    },
+    {
+      name: "Miami, Florida",
+      center: { lat: 25.7617, lng: -80.1918 },
+      zoom: 9,
+      description:
+        "In South Florida, we specialize in coastal luxury — elegant, open, and filled with natural light.",
+      cities: ["Miami", "Coral Gables", "Fort Lauderdale", "Palm Beach"],
+    },
+    {
       name: "New York",
       center: { lat: 40.7128, lng: -74.006 },
       zoom: 9,
@@ -43,22 +67,6 @@ export default function ServiceAreas() {
       description:
         "Our New Jersey projects blend craftsmanship and luxury across cities like Jersey City, Hoboken, and Princeton.",
       cities: ["Jersey City", "Hoboken", "Newark", "Princeton", "Paramus"],
-    },
-    {
-      name: "Miami, Florida",
-      center: { lat: 25.7617, lng: -80.1918 },
-      zoom: 9,
-      description:
-        "In South Florida, we specialize in coastal luxury — elegant, open, and filled with natural light.",
-      cities: ["Miami", "Coral Gables", "Fort Lauderdale", "Palm Beach"],
-    },
-    {
-      name: "Maryland & Washington, D.C.",
-      center: { lat: 38.9072, lng: -77.0369 },
-      zoom: 9,
-      description:
-        "Serving the heart of Washington, D.C. and select Maryland communities including Bethesda and Chevy Chase.",
-      cities: ["Bethesda", "Chevy Chase", "Rockville", "Washington D.C."],
     },
   ];
 
@@ -96,7 +104,7 @@ export default function ServiceAreas() {
 
       {/* Layout responsive */}
       <div className="flex flex-col-reverse md:flex-row gap-10 md:gap-16 w-full max-w-7xl items-center justify-center">
-        {/* Sidebar (régions) */}
+        {/* Liste régions */}
         <aside className="w-full md:w-1/3 space-y-8">
           {regions.map((region, i) => (
             <div key={i}>
@@ -138,10 +146,7 @@ export default function ServiceAreas() {
                 disableDefaultUI: false,
                 gestureHandling: "greedy",
                 styles: [
-                  {
-                    elementType: "geometry",
-                    stylers: [{ color: "#1d2c4d" }],
-                  },
+                  { elementType: "geometry", stylers: [{ color: "#1d2c4d" }] },
                   {
                     elementType: "labels.text.fill",
                     stylers: [{ color: "#8ec3b9" }],

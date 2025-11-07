@@ -46,7 +46,7 @@ export default function About() {
 
           <div className="relative w-64 h-80 sm:w-80 sm:h-[440px] rounded-2xl overflow-hidden border-4 border-[#c5a46d] shadow-[0_8px_30px_rgba(0,0,0,0.6)]">
             <Image
-              src="/profile-about.jpg"
+              src="/profilee-about.jpeg"
               alt="Founder Portrait"
               fill
               className="object-cover object-center transition-all duration-700 hover:scale-105"
@@ -69,20 +69,20 @@ export default function About() {
 >
   <p>
     With a Master’s degree in Architecture and Interior Design, I’ve spent over a
-    decade transforming spaces with intention, emotion, and artistry — across the
+    decade transforming spaces with intention, emotion, and artistry across the
     East Coast, from New York to Miami.
   </p>
 
   <p>
     Rooted in my Moroccan heritage and shaped by a French sensibility, my work
     blends culture and contemporary design to craft luxury environments that
-    transcend aesthetics — they transform the way you feel and live.
+    transcend aesthetics they transform the way you feel and live.
   </p>
 
   <p>
     As an artist and as the founder of <strong>The Good Sinner</strong>, my
     transformational life coaching platform, I extend that same philosophy beyond
-    design — guiding others to rebuild from within, to find beauty in imperfection,
+    design  guiding others to rebuild from within, to find beauty in imperfection,
     and to live authentically.
   </p>
 
