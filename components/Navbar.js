@@ -16,7 +16,7 @@ export default function Navbar() {
 
   const links = [
     { label: "About", href: "#about" },
-    { label: "Areas We Serve ", href: "#service-areas" },
+    
     { label: "What We Do ", href: "#interiors" },
     {
       label: "Services",
@@ -28,7 +28,7 @@ export default function Navbar() {
         { label: "Outdoor Design", href: "#service-5" },
       ],
     },
-    
+    { label: "Areas We Serve ", href: "#service-areas" },
     { label: "What Clients Say About Us!", href: "#testimonials" },
     { label: "Contact", href: "#contact" },
   ];

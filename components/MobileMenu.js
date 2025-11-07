@@ -8,7 +8,7 @@ export default function MobileMenu({ open, onClose }) {
 
   const links = [
     { label: "About", href: "#about" },
-    { label: "Areas We Serve ", href: "#service-areas" },
+    
 
     { label: "What We Do ", href: "#interiors" },
     {
@@ -23,9 +23,9 @@ export default function MobileMenu({ open, onClose }) {
       ],
     },
     
-    
+    { label: "Areas We Serve ", href: "#service-areas" },
     { label: "What Clients Say About Us!", href: "#testimonials" },
-    { label: "Shop", href: "#shop" },
+  
     { label: "Contact", href: "#contact" },
   ];
 

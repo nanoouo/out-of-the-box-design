@@ -18,9 +18,9 @@ export default function HomePage() {
         {/* Décalage pour navbar fixe */}
         <Hero />
         <About />
-        <ServiceAreas /> {/* ✅ use correct component name */}
-        <Services />
         <Interiors />
+        <Services />
+        <ServiceAreas /> 
         <Testimonials />
         <Contact />
         <Footer />
