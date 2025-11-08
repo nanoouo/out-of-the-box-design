@@ -13,7 +13,7 @@ export default function ServiceAreas() {
       name: "Northern Virginia",
       center: [38.8048, -77.0469],
       description:
-        "Serving Alexandria, Arlington, Fairfax, and the greater Northern Virginia area — within a 40-mile radius of Washington, D.C.",
+        "Serving Alexandria, Arlington, Fairfax, and the greater Northern Virginia area within a 40-mile radius of Washington, D.C.",
       cities: [
         "Alexandria",
         "Arlington",
@@ -31,21 +31,21 @@ export default function ServiceAreas() {
       name: "Washington, D.C.",
       center: [38.9072, -77.0369],
       description:
-        "Our design expertise extends across Washington, D.C. — offering modern and luxury interiors in the capital’s most iconic neighborhoods.",
+        "Our design expertise extends across Washington, D.C.  offering modern and luxury interiors in the capital’s most iconic neighborhoods.",
       cities: ["Georgetown", "Capitol Hill", "Dupont Circle", "Adams Morgan"],
     },
     {
       name: "Maryland",
       center: [39.0458, -76.6413],
       description:
-        "We serve select Maryland communities including Bethesda, Chevy Chase, and Rockville — where timeless design meets comfort.",
+        "We serve select Maryland communities including Bethesda, Chevy Chase, and Rockville where timeless design meets comfort.",
       cities: ["Bethesda", "Chevy Chase", "Rockville", "Potomac"],
     },
     {
       name: "Miami, Florida",
       center: [25.7617, -80.1918],
       description:
-        "In South Florida, we specialize in coastal luxury — elegant, open, and filled with natural light.",
+        "In South Florida, we specialize in coastal luxury  elegant, open, and filled with natural light.",
       cities: ["Miami", "Coral Gables", "Fort Lauderdale", "Palm Beach"],
     },
     {

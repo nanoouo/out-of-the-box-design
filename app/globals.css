@@ -1,5 +1,7 @@
 @import "tailwindcss";
 @import "leaflet/dist/leaflet.css";
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
 
 /* === Variables principales === */
 :root {
@@ -33,10 +35,12 @@
 /* === Base === */
 body {
   background-color: var(--color-background);
-  color: var(--color-foreground);
+  color: inherit;
   font-family: var(--font-sans);
   font-weight: 300;
   line-height: 1.75;
+  margin: 0;
+  padding: 0;
   transition: background-color 0.4s ease, color 0.4s ease;
 }
 
@@ -53,20 +57,22 @@ h1 {
   font-size: clamp(2rem, 4vw, 3.5rem);
   color: var(--gold);
 }
+
 h2 {
   font-size: clamp(1.8rem, 3vw, 2.4rem);
   color: var(--beige);
 }
+
 h3 {
   font-size: clamp(1.4rem, 2vw, 1.8rem);
 }
+
 h4 {
   font-size: clamp(1.2rem, 1.5vw, 1.4rem);
 }
 
 p {
   font-family: var(--font-sans);
- 
   font-size: clamp(1rem, 1.1vw, 1.1rem);
   line-height: 1.8;
   margin-bottom: 1.2em;
@@ -100,11 +106,85 @@ a:hover {
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }
-body {
-  background-color: var(--color-background);
-  color: inherit; /* ✅ ne force plus la couleur globale */
-  font-family: var(--font-sans);
+
+/* === Slick Carousel Custom Style === */
+.slick-slider {
+  position: relative;
+}
+
+.slick-slide img {
+  border-radius: 1.5rem;
+  transition: filter 0.4s ease, transform 0.5s ease;
+  filter: brightness(0.95);
+}
+
+.slick-slide img:hover {
+  filter: brightness(1.05);
+  transform: scale(1.02);
+}
+
+/* === Slick Carousel Dots (custom gold style) === */
+.slick-dots {
+  bottom: 20px !important;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.slick-dots li {
   margin: 0;
-  padding: 0;
-  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.slick-dots li div {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--gold);
+  box-shadow: 0 0 8px rgba(197, 164, 109, 0.5);
+  opacity: 0.4;
+  transition: all 0.3s ease;
+}
+
+.slick-dots li.slick-active div {
+  opacity: 1;
+  transform: scale(1.25);
+  box-shadow: 0 0 16px rgba(197, 164, 109, 0.9);
+}
+
+.slick-dots li div:hover {
+  opacity: 0.8;
+  transform: scale(1.1);
+  box-shadow: 0 0 12px rgba(197, 164, 109, 0.7);
+}
+
+/* === Responsive Dots === */
+@media (max-width: 768px) {
+  .slick-dots li div {
+    width: 9px;
+    height: 9px;
+  }
+
+  .slick-dots {
+    bottom: 12px !important;
+  }
+}
+
+/* === Effet doré subtil autour du carrousel === */
+.carousel-wrapper {
+  position: relative;
+  border-radius: 1.5rem;
+  overflow: hidden;
+}
+
+.carousel-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(197, 164, 109, 0.08),
+    transparent 70%
+  );
+  pointer-events: none;
 }

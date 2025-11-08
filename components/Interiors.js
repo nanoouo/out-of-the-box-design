@@ -69,7 +69,7 @@ export default function Interiors() {
     },
     {
       slug: "commercial",
-      video: "/commercial.mp4",
+      video: "/commercial1.mp4",
       title: "Commercial Interiors",
       shortDescription:
         "Every commercial space should reflect the brand’s identity and purpose. We interpret our clients’ business values to design functional and visually captivating environments.",

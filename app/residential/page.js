@@ -30,7 +30,7 @@ export default function ResidentialPage() {
           </h1>
 
           <p className="text-gray-300 leading-relaxed text-base sm:text-lg mb-6 text-justify">
-            Your home is your sanctuary — it should not only be peaceful, but also
+            Your home is your sanctuary  it should not only be peaceful, but also
             a reflection of your personality, filled with memories and aspirations.
             We help you turn your house into the paradise you deserve.
           </p>
