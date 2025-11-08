@@ -105,7 +105,7 @@ export default function Hero() {
                     Based in
                   </p>
                   <p className="text-[#e8e56d] text-sm sm:text-base mt-1">
-                    Washington · Miami · New York
+                    Washington D.C · Miami · New York
                   </p>
                 </motion.div>
               </motion.div>

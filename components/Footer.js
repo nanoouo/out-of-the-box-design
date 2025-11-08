@@ -30,21 +30,21 @@ export default function Footer() {
               target="_blank"
               className="hover:text-[#f9e65c] transition-colors"
             >
-              <Instagram size={24} />
+              <Instagram size={40} />
             </a>
             <a
               href="https://linkedin.com"
               target="_blank"
               className="hover:text-[#f9e65c] transition-colors"
             >
-              <Linkedin size={24} />
+              <Linkedin size={40} />
             </a>
             <a
               href="https://wa.me/17035086812"
               target="_blank"
               className="hover:text-[#25D366] transition-colors"
             >
-              <MessageSquare size={24} />
+              <MessageSquare size={40} />
             </a>
           </div>
         </div>
@@ -54,7 +54,7 @@ export default function Footer() {
           <h3 className="text-lg font-semibold text-[#f9e65c] mb-2">Quick Links</h3>
 
           <button
-            onClick={() => handleScroll("#")}
+            onClick={() => handleScroll("#hero")}
             className="text-left hover:text-[#f9e65c] transition-colors"
           >
             Home
@@ -69,12 +69,16 @@ export default function Footer() {
               Services
               <ChevronDown
                 size={18}
-                className={`ml-1 transition-transform duration-300 ${
-                  showServices ? "rotate-180 text-[#f9e65c]" : ""
-                }`}
+                className={`ml-1 transition-transform duration-300 ${showServices ? "rotate-180 text-[#f9e65c]" : ""
+                  }`}
               />
             </button>
-
+            <button
+              onClick={() => handleScroll("#interiors")}
+              className="text-left hover:text-[#f9e65c] transition-colors"
+            >
+              What We Do
+            </button>
             {showServices && (
               <div className="ml-3 mt-2 flex flex-col space-y-1 bg-[#1a1a1a]/90 p-2 rounded-lg border border-[#f9e65c33] shadow-lg">
                 <button
@@ -111,12 +115,7 @@ export default function Footer() {
             )}
           </div>
 
-          <button
-            onClick={() => handleScroll("#interiors")}
-            className="text-left hover:text-[#f9e65c] transition-colors"
-          >
-            Interiors
-          </button>
+
 
           <button
             onClick={() => handleScroll("#contact")}
@@ -130,11 +129,11 @@ export default function Footer() {
         <div className="flex flex-col space-y-2">
           <h3 className="text-lg font-semibold text-[#f9e65c] mb-2">Contact</h3>
           <div className="flex items-center space-x-2">
-            <Phone size={20} className="text-[#f9e65c]" />
+            <Phone size={30} className="text-[#f9e65c]" />
             <span>+1 (703) 508-6812</span>
           </div>
           <div className="flex items-center space-x-2">
-            <Mail size={20} className="text-[#f9e65c]" />
+            <Mail size={30} className="text-[#f9e65c]" />
             <span>Outoftheboxdesignstudio@gmail.com</span>
           </div>
         </div>

@@ -18,7 +18,7 @@ export default function Services() {
       title: "Luxury Custom Home Design",
       subtitle: "Where Vision Meets Architectural Artistry",
       desc: `Our custom home design service transforms your ideas into timeless living spaces.`,
-      images: ["/images/home1.jpg", "/images/home2.jpg", "/images/home3.jpg"],
+      images: ["/kit1.jpg", "/kit2.jpg", "/kit3.jpg"],
       features: [
         "Personalized concept development",
         "Architectural planning & 3D renderings",
@@ -30,7 +30,7 @@ export default function Services() {
       title: "Initial Design Consultation",
       subtitle: "Your First Step Toward a Refined Home",
       desc: `Our consultation introduces you to our design philosophy and process.`,
-      images: ["/images/consult1.jpg", "/images/consult2.jpg", "/images/consult3.jpg"],
+      images: ["bath1.jpg", "/bath2.jpg", "/bath3.jpg"],
       features: [
         "In-depth vision discussion",
         "Material & layout guidance",
@@ -42,7 +42,7 @@ export default function Services() {
       title: "Interior Virtual Design",
       subtitle: "Luxury Design, Delivered Remotely",
       desc: `Experience a fully personalized interior design journey from anywhere.`,
-      images: ["/images/virtual1.jpg", "/images/virtual2.jpg", "/images/virtual3.jpg"],
+      images: ["/bed1.jpg", "/bed2.jpg", "/bed3.jpg"],
       features: [
         "Custom moodboards & renderings",
         "Furniture & material curation",
