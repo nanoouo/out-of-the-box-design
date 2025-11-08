@@ -12,6 +12,7 @@ export default function Testimonials() {
     name: "",
     rating: 5,
     message: "",
+    role: "",
   });
 
   const [submittedTestimonials, setSubmittedTestimonials] = useState([]);
@@ -54,26 +55,23 @@ export default function Testimonials() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.name || !formData.message) return;
+    if (!formData.name || !formData.message || !formData.role) return;
 
     try {
       const res = await fetch("/api/testimonials", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(formData), // role inclus
       });
       const data = await res.json();
       console.log(data.message);
 
-      // Ajouter localement si rating >= 4
+      // Ajouter localement uniquement si rating >= 4
       if (formData.rating >= 4) {
-        setSubmittedTestimonials((prev) => [
-          ...prev,
-          { ...formData, role: "Client" },
-        ]);
+        setSubmittedTestimonials((prev) => [...prev, { ...formData }]);
       }
 
-      setFormData({ name: "", rating: 5, message: "" });
+      setFormData({ name: "", rating: 5, message: "", role: "" });
     } catch (err) {
       console.error(err);
     }
@@ -155,21 +153,26 @@ export default function Testimonials() {
             type="text"
             placeholder="Your Name"
             value={formData.name}
-            onChange={(e) =>
-              setFormData({ ...formData, name: e.target.value })
-            }
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             className="px-4 py-3 rounded-lg bg-[#222] border border-gray-600 text-white focus:border-[#f9e65c] focus:outline-none"
             required
           />
           <textarea
             placeholder="Your Testimonial"
             value={formData.message}
-            onChange={(e) =>
-              setFormData({ ...formData, message: e.target.value })
-            }
+            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
             className="px-4 py-3 rounded-lg bg-[#222] border border-gray-600 text-white focus:border-[#f9e65c] focus:outline-none resize-none h-32"
             required
           />
+          <input
+            type="text"
+            placeholder="Votre rôle (ex: Homeowner, Yacht Owner)"
+            value={formData.role || ""}
+            onChange={(e) => setFormData({ ...formData, role: e.target.value })}
+            className="px-4 py-3 rounded-lg bg-[#222] border border-gray-600 text-white focus:border-[#f9e65c] focus:outline-none"
+            required
+          />
+
           <div className="flex items-center space-x-3">
             <span className="text-gray-300">Rating:</span>
             {Array.from({ length: 5 }, (_, i) => (
@@ -177,9 +180,7 @@ export default function Testimonials() {
                 type="button"
                 key={i}
                 onClick={() => setFormData({ ...formData, rating: i + 1 })}
-                className={`transition-colors ${
-                  i < formData.rating ? "text-[#f9e65c]" : "text-gray-600"
-                }`}
+                className={`transition-colors ${i < formData.rating ? "text-[#f9e65c]" : "text-gray-600"}`}
               >
                 <Star size={24} />
               </button>
