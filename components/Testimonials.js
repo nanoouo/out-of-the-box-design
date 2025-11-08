@@ -2,10 +2,10 @@
 
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Star } from "lucide-react";
 
-export default function TestimonialsCarouselLoop() {
+export default function Testimonials() {
   const { sectionRef, animate } = useScrollAnimation(0.3);
 
   const [formData, setFormData] = useState({
@@ -15,6 +15,16 @@ export default function TestimonialsCarouselLoop() {
   });
 
   const [submittedTestimonials, setSubmittedTestimonials] = useState([]);
+
+  // Récupération des avis côté serveur
+  useEffect(() => {
+    async function fetchTestimonials() {
+      const res = await fetch("/api/testimonials");
+      const data = await res.json();
+      setSubmittedTestimonials(data);
+    }
+    fetchTestimonials();
+  }, []);
 
   const testimonials = [
     {
@@ -42,14 +52,31 @@ export default function TestimonialsCarouselLoop() {
 
   const allTestimonials = [...testimonials, ...submittedTestimonials];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.message) return;
-    setSubmittedTestimonials((prev) => [
-      ...prev,
-      { ...formData, role: "Client", rating: formData.rating },
-    ]);
-    setFormData({ name: "", rating: 5, message: "" });
+
+    try {
+      const res = await fetch("/api/testimonials", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      console.log(data.message);
+
+      // Ajouter localement si rating >= 4
+      if (formData.rating >= 4) {
+        setSubmittedTestimonials((prev) => [
+          ...prev,
+          { ...formData, role: "Client" },
+        ]);
+      }
+
+      setFormData({ name: "", rating: 5, message: "" });
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -59,7 +86,6 @@ export default function TestimonialsCarouselLoop() {
       className="relative w-full bg-gradient-to-b from-[#111] via-[#1a1a1a] to-[#222] text-white px-6 py-32 sm:py-36 overflow-hidden"
       style={{ scrollMarginTop: "6rem" }}
     >
-      {/* === Section Title === */}
       <motion.h2
         className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-center mb-12 text-[#f9e65c] drop-shadow-[0_0_15px_rgba(249,230,92,0.9)] uppercase tracking-widest"
         initial={{ opacity: 0, y: 40 }}
@@ -76,7 +102,7 @@ export default function TestimonialsCarouselLoop() {
         transition={{ duration: 0.8, delay: 0.4 }}
       />
 
-      {/* === Infinite Carousel === */}
+      {/* Carousel des avis */}
       <div className="overflow-hidden relative mb-16">
         <motion.div
           className="flex gap-6"
@@ -114,7 +140,7 @@ export default function TestimonialsCarouselLoop() {
         </motion.div>
       </div>
 
-      {/* === Form for new testimonial === */}
+      {/* Formulaire pour ajouter un avis */}
       <motion.div
         className="max-w-3xl mx-auto bg-[#1a1a1a]/70 backdrop-blur-md rounded-3xl p-6 sm:p-8 shadow-lg"
         initial={{ opacity: 0, y: 50 }}
@@ -168,7 +194,7 @@ export default function TestimonialsCarouselLoop() {
         </form>
       </motion.div>
 
-      {/* Optional Background */}
+      {/* Background */}
       <div className="absolute inset-0 bg-[url('/o.jpg')] bg-center bg-cover opacity-5 pointer-events-none"></div>
     </section>
   );
