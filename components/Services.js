@@ -1,12 +1,9 @@
 "use client";
 
 import { motion, useTransform, useScroll } from "framer-motion";
-import Slider from "react-slick";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
-import { Home, PhoneCall, Monitor, Brush, Sun } from "lucide-react";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { CookingPot, Bath, Layers, Grid, Sun, Utensils, Warehouse } from "lucide-react";
 
 export default function Services() {
   const { sectionRef, animate } = useScrollAnimation(0.1);
@@ -14,114 +11,80 @@ export default function Services() {
   const services = [
     {
       id: 1,
-      icon: <Home size={42} />,
-      title: "Luxury Custom Home Design",
-      subtitle: "Where Vision Meets Architectural Artistry",
-      desc: `Our custom home design service transforms your ideas into timeless living spaces.`,
-      images: ["/kit1.jpg", "/kit2.jpg", "/kit3.jpg"],
+      icon: <Utensils size={42} />,
+      title: "Kitchen Design",
+      subtitle: "Functional Elegance at the Heart of Your Home",
+      desc: `Our kitchen designs combine luxury and practicality to create inspiring culinary spaces. 
+Every element—from custom cabinetry to lighting—is tailored to your lifestyle. 
+We balance beauty, efficiency, and timeless materials for a warm, modern feel.`,
+      video: "/videos/kitchen.mp4",
       features: [
-        "Personalized concept development",
-        "Architectural planning & 3D renderings",
+        "Custom cabinetry & smart layouts",
+        "Lighting design & material selection",
       ],
     },
     {
       id: 2,
-      icon: <PhoneCall size={42} />,
-      title: "Initial Design Consultation",
-      subtitle: "Your First Step Toward a Refined Home",
-      desc: `Our consultation introduces you to our design philosophy and process.`,
-      images: ["bath1.jpg", "/bath2.jpg", "/bath3.jpg"],
+      icon: <Bath size={42} />,
+      title: "Bathroom Design",
+      subtitle: "Refined Comfort Meets Timeless Serenity",
+      desc: `We transform bathrooms into private sanctuaries of relaxation and beauty. 
+Our designs integrate premium finishes, balanced lighting, and modern spa-inspired features. 
+The result is a sophisticated retreat that elevates your daily routine.`,
+      video: "/videos/bathroom.mp4",
       features: [
-        "In-depth vision discussion",
-        "Material & layout guidance",
+        "Premium fixtures & marble finishes",
+        "Modern spa-style concepts",
       ],
     },
     {
       id: 3,
-      icon: <Monitor size={42} />,
-      title: "Interior Virtual Design",
-      subtitle: "Luxury Design, Delivered Remotely",
-      desc: `Experience a fully personalized interior design journey from anywhere.`,
-      images: ["/bed1.jpg", "/bed2.jpg", "/bed3.jpg"],
+      icon: <Warehouse size={42} />,
+      title: "Walk-In Closet Design",
+      subtitle: "Organization Redefined with Luxury in Mind",
+      desc: `Every walk-in closet we design is a masterpiece of organization and sophistication. 
+We emphasize space efficiency, custom shelving, and high-end finishes. 
+Your wardrobe becomes an elegant daily experience of comfort and style.`,
+      video: "/videos/closet.mp4",
       features: [
-        "Custom moodboards & renderings",
-        "Furniture & material curation",
+        "Tailored closet systems",
+        "Lighting & material harmony",
       ],
     },
     {
       id: 4,
-      icon: <Brush size={42} />,
-      title: "Feature Wall Design",
-      subtitle: "Make a Statement Worth Remembering",
-      desc: `A signature wall can transform any room into a work of art.`,
-      images: ["/images/wall1.jpg", "/images/wall2.jpg", "/images/wall3.jpg"],
+      icon: <Grid size={42} />,
+      title: "Other Areas",
+      subtitle: "Luxury That Extends Beyond the Main Spaces",
+      desc: `We create exceptional designs for every area of your home—each reflecting character and purpose. 
+From lounges to great rooms, each space blends comfort, flow, and refined aesthetics. 
+Discover the art of harmonious living across all dimensions of your residence.`,
+      video: "/videos/other.mp4",
       features: [
-        "Custom wall paneling & lighting",
-        "Premium wood or texture finishes",
+        "Office Design",
+        "Ballroom Design",
+        "Bar Design",
+        "Den Design",
+        "Foyer Design",
+        "Great Room Design",
+        "Lounge Design",
       ],
     },
     {
       id: 5,
       icon: <Sun size={42} />,
       title: "Outdoor Design",
-      subtitle: "Extend Luxury Beyond the Walls",
-      desc: `We create outdoor environments that blend seamlessly with your home’s architecture.`,
-      images: ["/images/outdoor1.jpg", "/images/outdoor2.jpg", "/images/outdoor3.jpg"],
+      subtitle: "Extend Your Home into Nature’s Beauty",
+      desc: `Our outdoor designs bring luxury beyond walls—balancing architecture and nature. 
+We design serene terraces, stylish lounges, and captivating gardens. 
+Every detail connects indoor refinement with outdoor tranquility for year-round enjoyment.`,
+      video: "/videos/outdoor.mp4",
       features: [
-        "Terrace & landscape design",
-        "Lighting & layout harmony",
+        "Landscape & terrace design",
+        "Lighting & seating coordination",
       ],
     },
   ];
-
-  const sliderSettings = {
-    dots: false,
-    infinite: true,
-    speed: 700,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 4000,
-    pauseOnHover: true,
-    arrows: false,
-    cssEase: "ease-in-out",
-  };
-
-  useEffect(() => {
-    // 👇 Scroll adaptatif selon mobile / desktop
-    const handleLinkClick = (event) => {
-      const href = event.target.getAttribute("href");
-      if (!href || !href.startsWith("#service-")) return;
-
-      event.preventDefault();
-      const serviceId = href.replace("#", "");
-      const element = document.getElementById(serviceId);
-
-      if (element) {
-        const isMobile = window.innerWidth < 1024;
-        let target = element;
-
-        // 👇 si mobile, scroll vers l’image
-        if (isMobile) {
-          const imgContainer = element.querySelector(".service-image");
-          if (imgContainer) target = imgContainer;
-        }
-
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    };
-
-    // 🔗 Intercepter tous les clics de lien Services
-    document.querySelectorAll('a[href^="#service-"]').forEach((link) => {
-      link.addEventListener("click", handleLinkClick);
-    });
-
-    return () => {
-      document.querySelectorAll('a[href^="#service-"]').forEach((link) => {
-        link.removeEventListener("click", handleLinkClick);
-      });
-    };
-  }, []);
 
   return (
     <section
@@ -147,16 +110,10 @@ export default function Services() {
         Bespoke Design. Architectural Precision. Refined Living.
       </motion.p>
 
-      {/* SERVICES */}
       <div className="space-y-32 max-w-7xl mx-auto">
         {services.map((s, i) => (
           <div id={`service-${s.id}`} key={s.id} className="scroll-mt-32">
-            <ServiceCard
-              service={s}
-              reverse={i % 2 !== 0}
-              animate={animate}
-              sliderSettings={sliderSettings}
-            />
+            <ServiceCard service={s} reverse={i % 2 !== 0} animate={animate} />
           </div>
         ))}
       </div>
@@ -164,20 +121,13 @@ export default function Services() {
   );
 }
 
-/* === ServiceCard === */
-function ServiceCard({ service, reverse, animate, sliderSettings }) {
+function ServiceCard({ service, reverse, animate }) {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
   });
   const y = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const customSettings = {
-    ...sliderSettings,
-    beforeChange: (_, next) => setActiveIndex(next),
-  };
 
   return (
     <motion.div
@@ -189,41 +139,24 @@ function ServiceCard({ service, reverse, animate, sliderSettings }) {
       animate={animate ? { opacity: 1, y: 0 } : { opacity: 0 }}
       transition={{ duration: 0.9 }}
     >
-      {/* IMAGE + CAROUSEL */}
+      {/* Vidéo du service */}
       <motion.div
         style={{ y }}
         whileHover={{ scale: 1.02 }}
         transition={{ type: "spring", stiffness: 100, damping: 12 }}
-        className="service-image w-full lg:w-1/2 rounded-3xl overflow-hidden shadow-[0_0_25px_rgba(232,229,109,0.1)] relative"
+        className="service-media w-full lg:w-1/2 rounded-3xl overflow-hidden shadow-[0_0_25px_rgba(232,229,109,0.1)] relative"
       >
-        <Slider {...customSettings}>
-          {service.images.map((img, idx) => (
-            <div key={idx}>
-              <img
-                src={img}
-                alt={`${service.title} ${idx}`}
-                className="w-full h-[350px] sm:h-[420px] object-cover rounded-3xl"
-              />
-            </div>
-          ))}
-        </Slider>
-
-        {/* DOTS */}
-        <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
-          {service.images.map((_, i) => (
-            <motion.div
-              key={i}
-              className={`w-3 h-3 rounded-full cursor-pointer transition-all duration-300 ${
-                i === activeIndex
-                  ? "bg-[#e8e56d] scale-125 shadow-[0_0_10px_#e8e56d]"
-                  : "bg-[#e8e56d55] scale-90"
-              }`}
-            />
-          ))}
-        </div>
+        <video
+          src={service.video}
+          controls
+          autoPlay
+          loop
+          muted
+          className="w-full h-[350px] sm:h-[420px] object-cover rounded-3xl"
+        />
       </motion.div>
 
-      {/* TEXTE */}
+      {/* Contenu du service */}
       <div className="w-full lg:w-1/2 space-y-4 text-center lg:text-left">
         <div className="flex justify-center lg:justify-start items-center gap-4">
           <div className="bg-[#ffffff0d] text-[#e8e56d] rounded-full w-16 h-16 flex items-center justify-center shadow-md shadow-[#e8e56d44]">

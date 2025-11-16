@@ -18,18 +18,20 @@ export default function Navbar() {
     { label: "About", href: "#about" },
     
     { label: "What We Do ", href: "#interiors" },
-    {
-      label: "Services",
-      dropdown: [
-        { label: "Luxury Custom Home Design", href: "#service-1" },
-        { label: "Initial Design Consultation", href: "#service-2" },
-        { label: "Interior Virtual Design", href: "#service-3" },
-        { label: "Feature Wall Design", href: "#service-4" },
-        { label: "Outdoor Design", href: "#service-5" },
-      ],
-    },
+  {
+  label: "Services",
+  dropdown: [
+    { label: "Kitchen Design", href: "#service-1" },
+    { label: "Bathroom Design", href: "#service-2" },
+    { label: "Walk-In Closet Design", href: "#service-3" },
+    { label: "Other Areas", href: "#service-4" },
+    { label: "Outdoor Design", href: "#service-5" },
+  ],
+},
+
     { label: "Areas We Serve ", href: "#service-areas" },
     { label: "What Clients Say About Us!", href: "#testimonials" },
+    { label: "Shop Our Art", href: "#shop-art" },
     { label: "Contact", href: "#contact" },
   ];
 

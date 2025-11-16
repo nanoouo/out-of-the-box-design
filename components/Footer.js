@@ -115,7 +115,12 @@ export default function Footer() {
             )}
           </div>
 
-
+<button
+            onClick={() => handleScroll("#shop-art")}
+            className="text-left hover:text-[#f9e65c] transition-colors"
+          >
+            Shop Our Art
+          </button>
 
           <button
             onClick={() => handleScroll("#contact")}
