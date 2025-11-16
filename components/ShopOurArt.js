@@ -29,20 +29,28 @@ export default function ShopOurArt() {
 
   return (
     <section
-      
+      id="#shop-art"
       className="bg-gradient-to-b from-[#0e0e0e] to-[#181818] text-white px-6 sm:px-12 lg:px-24 py-24 space-y-12"
     >
+
       {/* VIDEO HEADER */}
-      <div className="flex justify-center">
-        <div id="shop-art" className="w-full max-w-4xl rounded-2xl overflow-hidden shadow-lg border border-[#333]">
-          <video
-            src="/pres.mp4"
-            controls
-            autoPlay
-            muted
-            loop
-            className="w-full aspect-video object-cover"
-          />
+      <div className="flex flex-col items-center mb-16">
+        <div className="w-full max-w-4xl rounded-2xl overflow-hidden shadow-lg border border-[#333]">
+
+          {/* WRAPPER HORIZONTAL RESPONSIVE */}
+          <div className="video-wrapper">
+
+            {/* VIDÉO VERTICALE AFFICHÉE EN ENTIER */}
+            <video
+              src="/pres.mp4"
+              controls
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="video-full-vertical"
+            />
+          </div>
         </div>
       </div>
 
