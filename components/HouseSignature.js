@@ -3,18 +3,9 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-// Images pour les carousels (à remplacer par tes vrais fichiers)
-const woodworkImages = [
-  "/woodwork1.jpg",
-  "/woodwork2.jpg",
-  "/woodwork3.jpg",
-];
-
-const gypsumImages = [
-  "/gypsum1.jpg",
-  "/gypsum2.jpg",
-  "/gypsum3.jpg",
-];
+// Images pour les carousels
+const woodworkImages = ["/woodwork1.jpg", "/woodwork2.jpg", "/woodwork3.jpg"];
+const gypsumImages = ["/gypsum1.jpg", "/gypsum2.jpg", "/gypsum3.jpg"];
 
 function Carousel({ images }) {
   const [current, setCurrent] = useState(0);
@@ -23,24 +14,25 @@ function Carousel({ images }) {
   const nextSlide = () => setCurrent(current === images.length - 1 ? 0 : current + 1);
 
   return (
-    <div className="relative w-full max-w-3xl mx-auto overflow-hidden rounded-2xl shadow-lg">
+    <div className="relative w-full overflow-hidden rounded-2xl shadow-lg">
+      {/* Image responsive avec aspect ratio */}
       <img
         src={images[current]}
         alt={`Slide ${current + 1}`}
-        className="w-full h-64 sm:h-80 md:h-96 object-cover transition-all duration-500 rounded-2xl"
+        className="w-full aspect-[4/3] sm:aspect-[16/9] object-cover transition-all duration-500 rounded-2xl"
       />
 
       {/* Navigation buttons */}
       <button
         onClick={prevSlide}
-        className="absolute top-1/2 left-2 sm:left-3 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition z-20"
+        className="absolute top-1/2 -translate-y-1/2 left-[10px] bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition z-20"
         aria-label="Previous slide"
       >
         <ChevronLeft size={24} />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute top-1/2 right-2 sm:right-3 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition z-20"
+        className="absolute top-1/2 -translate-y-1/2 right-[10px] bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition z-20"
         aria-label="Next slide"
       >
         <ChevronRight size={24} />
@@ -55,13 +47,12 @@ function Carousel({ images }) {
               idx === current ? "bg-[#e8e56d]" : "bg-gray-400/50"
             }`}
             onClick={() => setCurrent(idx)}
-          ></span>
+          />
         ))}
       </div>
     </div>
   );
 }
-
 
 export default function HouseSignature() {
   return (
@@ -81,7 +72,7 @@ export default function HouseSignature() {
 
       {/* Moroccan Handmade Woodwork */}
       <div className="flex flex-col lg:flex-row items-center gap-10">
-        <div className="lg:w-1/2">
+        <div className="lg:w-1/2 w-full">
           <Carousel images={woodworkImages} />
         </div>
         <div className="lg:w-1/2 space-y-4">
@@ -90,7 +81,7 @@ export default function HouseSignature() {
           </h2>
           <p className="text-gray-300 text-lg font-semibold">Precision, tradition, and soul.</p>
           <p className="text-gray-400 leading-relaxed">
-            We also specialize in custom Moroccan hand-crafted woodwork, from carved panels to intricate doors, arches, and ceiling inlays. Every piece is shaped by master artisans using traditional tools and centuries-old carving methods.
+            We specialize in custom Moroccan hand-crafted woodwork, from carved panels to intricate doors, arches, and ceiling inlays. Each piece is shaped by master artisans using traditional tools and centuries-old carving methods.
           </p>
           <ul className="list-disc list-inside text-gray-400 leading-relaxed space-y-1">
             <li>Authentic Moroccan craftsmanship</li>
@@ -106,7 +97,7 @@ export default function HouseSignature() {
 
       {/* Moroccan Handmade Gypsum */}
       <div className="flex flex-col lg:flex-row-reverse items-center gap-10">
-        <div className="lg:w-1/2">
+        <div className="lg:w-1/2 w-full">
           <Carousel images={gypsumImages} />
         </div>
         <div className="lg:w-1/2 space-y-4">
