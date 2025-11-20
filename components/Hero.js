@@ -86,9 +86,9 @@ export default function Hero() {
                 className="mb-6 flex flex-col items-center text-center"
               >
                 <Image
-                  src="/logo0.png"
+                  src="/logooff.png"
                   alt="Out of the Box Design Studio"
-                  width={450}
+                  width={400}
                   height={240}
                   priority
                   className="mx-auto drop-shadow-2xl"

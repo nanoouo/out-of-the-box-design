@@ -30,7 +30,8 @@ export default function Navbar() {
 },
 
     { label: "Areas We Serve ", href: "#service-areas" },
-    { label: "What Clients Say About Us!", href: "#testimonials" },
+    { label: "Their words-Our reputation", href: "#testimonials" },
+    { label: "HouseSignature", href: "#HouseSignature" },
     { label: "Shop Our Art", href: "#shop-art" },
     { label: "Contact", href: "#contact" },
   ];
@@ -68,10 +69,10 @@ export default function Navbar() {
           onClick={(e) => scrollToSection(e, "#hero")}
         >
           <Image
-            src="/logo0.png"
+            src="/logooff.png"
             alt="Out of the Box Logo"
-            width={150}
-            height={55}
+            width={70}
+            height={40}
             className="object-contain brightness-125 hover:scale-105 transition-transform duration-300"
             priority
           />
@@ -129,7 +130,7 @@ export default function Navbar() {
       {/* MOBILE NAV */}
       <div className="flex md:hidden items-center justify-between px-5 sm:px-8 py-3">
         <Image
-          src="/logo0.png"
+          src="/logooff.png"
           alt="Out of the Box"
           width={120}
           height={45}

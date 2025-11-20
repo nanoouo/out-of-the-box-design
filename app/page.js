@@ -8,8 +8,10 @@ import Navbar from "../components/Navbar";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import ServiceAreas from "@/components/ServiceAreas"; // ✅ import your ServiceAreas component
+import ServiceAreas from "@/components/ServiceAreas"; 
+import HouseSignature from "@/components/HouseSignature";// ✅ import your ServiceAreas component
 import ShopOurArt from "@/components/ShopOurArt"; 
+
 
 export default function HomePage() {
   return (
@@ -22,6 +24,7 @@ export default function HomePage() {
         <Interiors />
         <Services />
         <ServiceAreas />
+       
         <ShopOurArt /> 
         <Testimonials />
         <Contact />
