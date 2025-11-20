@@ -26,19 +26,13 @@ export default function Footer() {
           </p>
           <div className="flex space-x-4">
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/outoftheboxdesignstudio"
               target="_blank"
               className="hover:text-[#f9e65c] transition-colors"
             >
               <Instagram size={40} />
             </a>
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              className="hover:text-[#f9e65c] transition-colors"
-            >
-              <Linkedin size={40} />
-            </a>
+            
             <a
               href="https://wa.me/17035086812"
               target="_blank"
@@ -114,6 +108,12 @@ export default function Footer() {
               </div>
             )}
           </div>
+          <button
+            onClick={() => handleScroll("#HouseSignature")}
+            className="text-left hover:text-[#f9e65c] transition-colors"
+          >
+           House Signature
+          </button>
 
 <button
             onClick={() => handleScroll("#shop-art")}

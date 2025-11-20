@@ -25,6 +25,7 @@ export default function MobileMenu({ open, onClose }) {
     
     { label: "Areas We Serve ", href: "#service-areas" },
     { label: "Their words-Our reputation", href: "#testimonials" },
+    { label: "House Signature", href: "#HouseSignature" },
   { label: "Shop Our Art", href: "#shop-art" },
     { label: "Contact", href: "#contact" },
   ];

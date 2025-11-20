@@ -31,7 +31,7 @@ export default function Navbar() {
 
     { label: "Areas We Serve ", href: "#service-areas" },
     { label: "Their words-Our reputation", href: "#testimonials" },
-    { label: "HouseSignature", href: "#HouseSignature" },
+    { label: "House Signature", href: "#HouseSignature" },
     { label: "Shop Our Art", href: "#shop-art" },
     { label: "Contact", href: "#contact" },
   ];
