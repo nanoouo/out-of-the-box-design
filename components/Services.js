@@ -1,90 +1,232 @@
 "use client";
 
+import React, { useRef, useState } from "react";
+
 import { motion, useTransform, useScroll } from "framer-motion";
-import { useRef, useState } from "react";
+import {
+  CookingPot,
+  Bath,
+  Layers,
+  Grid,
+  Sun,
+  Utensils,
+  Warehouse,
+  Package,
+  Search,
+} from "lucide-react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
-import { CookingPot, Bath, Layers, Grid, Sun, Utensils, Warehouse } from "lucide-react";
+
+/**
+ * Services - composant principal
+ * - 12 services
+ * - chaque service a: id, icon, title, subtitle, desc, video (chemin), features[]
+ *
+ * NOTE: j'utilise le chemin local de ton image uploadée comme poster pour le 1er service:
+ * "/mnt/data/WhatsApp Image 2025-11-20 at 4.27.30 PM.jpeg"
+ */
 
 export default function Services() {
   const { sectionRef, animate } = useScrollAnimation(0.1);
 
-  const services = [
-    {
-      id: 1,
-      icon: <Utensils size={42} />,
-      title: "Kitchen Design",
-      subtitle: "Functional Elegance at the Heart of Your Home",
-      desc: `Our kitchen designs combine luxury and practicality to create inspiring culinary spaces. 
-Every element—from custom cabinetry to lighting—is tailored to your lifestyle. 
-We balance beauty, efficiency, and timeless materials for a warm, modern feel.`,
-      video: "/videos/kitchen.mp4",
-      features: [
-        "Custom cabinetry & smart layouts",
-        "Lighting design & material selection",
-      ],
-    },
-    {
-      id: 2,
-      icon: <Bath size={42} />,
-      title: "Bathroom Design",
-      subtitle: "Refined Comfort Meets Timeless Serenity",
-      desc: `We transform bathrooms into private sanctuaries of relaxation and beauty. 
-Our designs integrate premium finishes, balanced lighting, and modern spa-inspired features. 
-The result is a sophisticated retreat that elevates your daily routine.`,
-      video: "/videos/bathroom.mp4",
-      features: [
-        "Premium fixtures & marble finishes",
-        "Modern spa-style concepts",
-      ],
-    },
-    {
-      id: 3,
-      icon: <Warehouse size={42} />,
-      title: "Walk-In Closet Design",
-      subtitle: "Organization Redefined with Luxury in Mind",
-      desc: `Every walk-in closet we design is a masterpiece of organization and sophistication. 
-We emphasize space efficiency, custom shelving, and high-end finishes. 
-Your wardrobe becomes an elegant daily experience of comfort and style.`,
-      video: "/videos/closet.mp4",
-      features: [
-        "Tailored closet systems",
-        "Lighting & material harmony",
-      ],
-    },
-    {
-      id: 4,
-      icon: <Grid size={42} />,
-      title: "Other Areas",
-      subtitle: "Luxury That Extends Beyond the Main Spaces",
-      desc: `We create exceptional designs for every area of your home—each reflecting character and purpose. 
-From lounges to great rooms, each space blends comfort, flow, and refined aesthetics. 
-Discover the art of harmonious living across all dimensions of your residence.`,
-      video: "/videos/other.mp4",
-      features: [
-        "Office Design",
-        "Ballroom Design",
-        "Bar Design",
-        "Den Design",
-        "Foyer Design",
-        "Great Room Design",
-        "Lounge Design",
-      ],
-    },
-    {
-      id: 5,
-      icon: <Sun size={42} />,
-      title: "Outdoor Design",
-      subtitle: "Extend Your Home into Nature’s Beauty",
-      desc: `Our outdoor designs bring luxury beyond walls—balancing architecture and nature. 
-We design serene terraces, stylish lounges, and captivating gardens. 
-Every detail connects indoor refinement with outdoor tranquility for year-round enjoyment.`,
-      video: "/videos/outdoor.mp4",
-      features: [
-        "Landscape & terrace design",
-        "Lighting & seating coordination",
-      ],
-    },
-  ];
+const services = [
+  {
+    id: 1,
+    icon: <Layers size={42} />,
+    title: "Luxury Custom Home Design",
+    subtitle: "High-End Personalized Architectural Experience",
+    desc: `
+Luxury Custom Home Design — Where Vision Meets Architectural Artistry
+
+Our luxury custom home design service transforms your ideas into timeless living spaces tailored to your lifestyle. Every project begins with a deep understanding of your aesthetic, functional needs, and the way you live.
+
+From concept sketches to final architectural plans, we ensure every element — proportions, materials, light, and flow — harmonizes beautifully.
+
+Our design process includes:
+• Personalized concept development
+• Site analysis and architectural planning
+• 3D renderings & virtual walkthroughs
+• Collaboration with architects, builders, and artisans
+• Selection of luxury materials and finishes
+• Integration of smart home and sustainable design features
+
+The result: a one-of-a-kind residence that embodies your vision and elevates everyday living into an experience of artful comfort.
+`,
+    video: "/commercial1.mp4",
+
+    features: ["Full custom architecture", "Luxury material selection"],
+  },
+
+  {
+    id: 2,
+    icon: <Search size={42} />,
+    title: "Initial Design Consultation",
+    subtitle: "A Strategic First Step Toward Your Dream Space",
+    desc: `
+Initial Design Consultation — Your First Step Toward a Refined Home
+
+Our initial design consultation is a comprehensive introduction to your project and our design philosophy. During this session, we explore your goals, preferences, and the unique character of your space — whether it’s a new build, renovation, or full-scale interior design.
+
+What’s included:
+• In-depth conversation about your design vision
+• Review of architectural plans or inspiration imagery
+• Preliminary recommendations on layout, style, and materials
+• Overview of our design process, timeline, and next steps
+
+Following the consultation, you’ll receive a tailored proposal outlining how we can bring your dream home to life with our bespoke design approach. (Consultations are available in-person or virtually.)
+`,
+    video: "/videos/consultation.mp4",
+    features: ["Vision analysis", "Design roadmapping"],
+  },
+
+  {
+    id: 3,
+    icon: <Grid size={42} />,
+    title: "Interior Virtual Design",
+    subtitle: "Luxury Design Delivered Remotely",
+    desc: `
+Interior Virtual Design — Luxury Design, Delivered Remotely
+
+Our virtual design service offers a fully personalized interior experience from anywhere in the world. We provide concept boards, furniture selections, finish palettes, and styling recommendations — all tailored to your space and budget.
+
+You’ll receive a complete design package including:
+• Concept boards
+• Furniture recommendations
+• Finish and color palettes
+• Styling guidelines
+• Clickable shopping list
+• Layout plan
+
+This allows you to execute the design at your own pace with confidence and clarity.
+`,
+    video: "/videos/virtual.mp4",
+    features: ["3D visualizations", "Concept + moodboard"],
+  },
+
+  {
+    id: 4,
+    icon: <Grid size={42} />,
+    title: "Feature Wall Design",
+    subtitle: "Make a Statement Worth Remembering",
+    desc: `
+Feature Wall Design — A Signature Statement for Any Room
+
+A feature wall transforms any room into a work of art. We create custom-designed wall treatments using luxury materials — from bespoke millwork and natural stone to textured finishes and custom panels.
+
+Each design is composed to:
+• Enhance architectural features
+• Complement the room’s style
+• Add visual depth and identity
+• Create a memorable focal point
+
+Your wall becomes an artistic centerpiece that elevates the entire space.
+`,
+    video: "/videos/feature-wall.mp4",
+    features: ["Custom patterns", "Lighting integration"],
+  },
+
+  {
+    id: 5,
+    icon: <Package size={42} />,
+    title: "Sourcing & Procurement Service",
+    subtitle: "Premium Materials and Luxury Furnishings",
+    desc: `
+We source the highest-quality materials, furniture, lighting, and décor from trusted global suppliers to bring your project to life. Every item is selected with precision to match your design vision.
+`,
+    video: "/videos/sourcing.mp4",
+    features: ["Vendor coordination", "Material acquisition"],
+  },
+
+  {
+    id: 6,
+    icon: <Utensils size={42} />,
+    title: "Kitchen Design",
+    subtitle: "Functional Elegance at the Heart of Your Home",
+    desc: `
+Our kitchen designs combine beauty and practicality, blending luxurious materials with smart layouts tailored to your lifestyle.
+`,
+    video: "/videos/kitchen.mp4",
+    features: ["Custom cabinetry", "Lighting & material selection"],
+  },
+
+  {
+    id: 7,
+    icon: <Bath size={42} />,
+    title: "Bathroom Design",
+    subtitle: "A Sanctuary of Comfort and Elegance",
+    desc: `
+We transform bathrooms into refined spaces of relaxation, featuring premium fixtures, balanced lighting, and spa-inspired concepts.
+`,
+    video: "/videos/bathroom.mp4",
+    features: ["Marble finishes", "Modern spa concepts"],
+  },
+
+  {
+    id: 8,
+    icon: <Warehouse size={42} />,
+    title: "Walk-In Closet Design",
+    subtitle: "Luxury Organization Tailored to You",
+    desc: `
+We create sophisticated closets with custom shelving, elegant lighting, and premium finishes for an elevated daily experience.
+`,
+    video: "/videos/closet.mp4",
+    features: ["Custom systems", "Material harmony"],
+  },
+
+  {
+    id: 9,
+    icon: <Grid size={42} />,
+    title: "Other Areas",
+    subtitle: "Luxury Across Every Corner of Your Home",
+    desc: `
+We design every corner of your home—lounges, foyers, great rooms, bars, offices—with harmony, flow, and refined aesthetics.
+`,
+    video: "/videos/other.mp4",
+    features: [
+      "Office design",
+      "Ballroom design",
+      "Bar design",
+      "Den design",
+      "Foyer design",
+    ],
+  },
+
+  {
+    id: 10,
+    icon: <Sun size={42} />,
+    title: "Outdoor Design",
+    subtitle: "Beautiful Living Beyond Your Walls",
+    desc: `
+We create serene, elegant outdoor environments that connect architecture with nature — gardens, terraces, outdoor lounges, and more.
+    `,
+    video: "/videos/outdoor.mp4",
+    features: ["Landscape design", "Lighting & seating"],
+  },
+
+  {
+    id: 11,
+    icon: <Layers size={42} />,
+    title: "House Signature — Moroccan Gypsum",
+    subtitle: "Authentic Moroccan Handmade Gypsum",
+    desc: `
+We offer bespoke Moroccan carved gypsum, adding character, tradition, and artistry to your interiors.
+`,
+    video: "/videos/gypsum.mp4",
+    features: ["Traditional carving", "Custom patterns"],
+  },
+
+  {
+    id: 12,
+    icon: <Layers size={42} />,
+    title: "House Signature — Moroccan Woodwork",
+    subtitle: "Handmade Woodwork with Timeless Detail",
+    desc: `
+Hand-crafted Moroccan woodwork with rich textures, intricate carving, and timeless authenticity.
+`,
+    video: "/videos/woodwork.mp4",
+    features: ["Hand-carved details", "Premium woods"],
+  },
+];
+
 
   return (
     <section
@@ -121,13 +263,19 @@ Every detail connects indoor refinement with outdoor tranquility for year-round 
   );
 }
 
+/* -------------------------------------------------------------------------- */
+/* ------------------------------ ServiceCard --------------------------------*/
+/* -------------------------------------------------------------------------- */
+
 function ServiceCard({ service, reverse, animate }) {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
   });
+
   const y = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
+  const [expanded, setExpanded] = useState(false);
 
   return (
     <motion.div
@@ -139,24 +287,28 @@ function ServiceCard({ service, reverse, animate }) {
       animate={animate ? { opacity: 1, y: 0 } : { opacity: 0 }}
       transition={{ duration: 0.9 }}
     >
-      {/* Vidéo du service */}
+      {/* VIDEO */}
       <motion.div
-        style={{ y }}
-        whileHover={{ scale: 1.02 }}
-        transition={{ type: "spring", stiffness: 100, damping: 12 }}
-        className="service-media w-full lg:w-1/2 rounded-3xl overflow-hidden shadow-[0_0_25px_rgba(232,229,109,0.1)] relative"
-      >
-        <video
-          src={service.video}
-          controls
-          autoPlay
-          loop
-          muted
-          className="w-full h-[350px] sm:h-[420px] object-cover rounded-3xl"
-        />
-      </motion.div>
+  style={{ y }}
+  whileHover={{ scale: 1.02 }}
+  transition={{ type: "spring", stiffness: 100, damping: 12 }}
+  className="service-media h-full lg: rounded-3xl overflow-hidden shadow-[0_0_25px_rgba(232,229,109,0.1)] relative"
+>
 
-      {/* Contenu du service */}
+  <video
+  src={service.video}
+  controls
+  autoPlay
+  loop
+  muted
+  poster={service.poster}
+  className="h-full w-auto object-cover rounded-3xl"
+  style={{ maxHeight: "550px" }} // optionnel si tu veux limiter la hauteur
+/>
+
+</motion.div>
+
+      {/* TEXTE */}
       <div className="w-full lg:w-1/2 space-y-4 text-center lg:text-left">
         <div className="flex justify-center lg:justify-start items-center gap-4">
           <div className="bg-[#ffffff0d] text-[#e8e56d] rounded-full w-16 h-16 flex items-center justify-center shadow-md shadow-[#e8e56d44]">
@@ -164,8 +316,24 @@ function ServiceCard({ service, reverse, animate }) {
           </div>
           <h3 className="text-2xl font-semibold text-[#e8e56d]">{service.title}</h3>
         </div>
+
         <h4 className="text-lg italic text-gray-300">{service.subtitle}</h4>
-        <p className="text-gray-300 leading-relaxed">{service.desc}</p>
+
+        {/* Description avec line clamp */}
+        <p className={`text-gray-300 leading-relaxed ${expanded ? "" : "line-clamp-3"}`}>
+          {service.desc}
+        </p>
+
+        {/* Bouton Learn More */}
+        {service.desc.length > 120 && (
+          <button
+            onClick={() => setExpanded(!expanded)}
+            className="text-[#e8e56d] font-semibold hover:underline mt-1"
+          >
+            {expanded ? "Show Less" : "Learn More"}
+          </button>
+        )}
+
         <ul className="list-disc list-inside text-gray-400 space-y-1 pl-3 text-left">
           {service.features.map((f, idx) => (
             <li key={idx}>{f}</li>

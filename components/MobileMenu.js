@@ -11,17 +11,25 @@ export default function MobileMenu({ open, onClose }) {
     
 
     { label: "What We Do ", href: "#interiors" },
-    {
-      label: "Services",
-      href: "#services",
-      subLinks: [
-        { label: "Kitchen Design", href: "#service-1" },
-        { label: "Bathroom Design", href: "#service-2" },
-        { label: "Walk-in Closet", href: "#service-3" },
-        { label: "Other Areas", href: "#service-4" },
-        { label: "Outdoor Design", href: "#service-5" },
-      ],
-    },
+ {
+  label: "Services",
+  href: "#services",
+  subLinks: [
+    { label: "Luxury Custom Home Design", href: "#service-1" },
+    { label: "Initial Design Consultation", href: "#service-2" },
+    { label: "Interior Virtual Design", href: "#service-3" },
+    { label: "Feature Wall Design", href: "#service-4" },
+    { label: "Sourcing & Procurement", href: "#service-5" },
+    { label: "Kitchen Design", href: "#service-6" },
+    { label: "Bathroom Design", href: "#service-7" },
+    { label: "Walk-In Closet Design", href: "#service-8" },
+    { label: "Other Areas", href: "#service-9" },
+    { label: "Outdoor Design", href: "#service-10" },
+    { label: "Moroccan Handmade Gypsum", href: "#service-11" },
+    { label: "Moroccan Handmade Woodwork", href: "#service-12" },
+  ],
+},
+
     
     { label: "Areas We Serve ", href: "#service-areas" },
     { label: "Their words-Our reputation", href: "#testimonials" },

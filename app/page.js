@@ -23,9 +23,10 @@ export default function HomePage() {
         <About />
         <Interiors />
         <Services />
-        <ServiceAreas />
+        
         <HouseSignature/>
         <ShopOurArt /> 
+        <ServiceAreas />
         <Testimonials />
         <Contact />
         <Footer />

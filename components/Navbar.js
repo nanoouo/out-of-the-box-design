@@ -18,21 +18,29 @@ export default function Navbar() {
     { label: "About", href: "#about" },
     
     { label: "What We Do ", href: "#interiors" },
-  {
+{
   label: "Services",
   dropdown: [
-    { label: "Kitchen Design", href: "#service-1" },
-    { label: "Bathroom Design", href: "#service-2" },
-    { label: "Walk-In Closet Design", href: "#service-3" },
-    { label: "Other Areas", href: "#service-4" },
-    { label: "Outdoor Design", href: "#service-5" },
+    { label: "Luxury Custom Home Design", href: "#service-1" },
+    { label: "Initial Design Consultation", href: "#service-2" },
+    { label: "Interior Virtual Design", href: "#service-3" },
+    { label: "Feature Wall Design", href: "#service-4" },
+    { label: "Sourcing & Procurement Service", href: "#service-5" },
+    { label: "Kitchen Design", href: "#service-6" },
+    { label: "Bathroom Design", href: "#service-7" },
+    { label: "Walk-In Closet Design", href: "#service-8" },
+    { label: "Other Areas", href: "#service-9" },
+    { label: "Outdoor Design", href: "#service-10" },
+    { label: "House Signature — Moroccan Gypsum", href: "#service-11" },
+    { label: "House Signature — Moroccan Woodwork", href: "#service-12" },
   ],
 },
 
-    { label: "Areas We Serve ", href: "#service-areas" },
+
+       { label: "House Signature", href: "#HouseSignature" },
+       { label: "Shop Our Art", href: "#shop-art" },
+       { label: "Areas We Serve ", href: "#service-areas" },
     { label: "Their words-Our reputation", href: "#testimonials" },
-    { label: "House Signature", href: "#HouseSignature" },
-    { label: "Shop Our Art", href: "#shop-art" },
     { label: "Contact", href: "#contact" },
   ];
 
@@ -132,7 +140,7 @@ export default function Navbar() {
         <Image
           src="/logooff.png"
           alt="Out of the Box"
-          width={120}
+          width={90}
           height={45}
           className="object-contain brightness-125 cursor-pointer"
           onClick={(e) => scrollToSection(e, "#hero")}

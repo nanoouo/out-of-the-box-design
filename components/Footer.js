@@ -3,6 +3,21 @@
 import { Instagram, Linkedin, Mail, Phone, MessageSquare, ChevronDown } from "lucide-react";
 import { useState } from "react";
 
+const services = [
+  { label: "Luxury Custom Home Design", href: "#service-1" },
+  { label: "Initial Design Consultation", href: "#service-2" },
+  { label: "Interior Virtual Design", href: "#service-3" },
+  { label: "Feature Wall Design", href: "#service-4" },
+  { label: "Sourcing & Procurement Service", href: "#service-5" },
+  { label: "Kitchen Design", href: "#service-6" },
+  { label: "Bathroom Design", href: "#service-7" },
+  { label: "Walk-In Closet Design", href: "#service-8" },
+  { label: "Other Areas", href: "#service-9" },
+  { label: "Outdoor Design", href: "#service-10" },
+  { label: "House Signature — Moroccan Gypsum", href: "#service-11" },
+  { label: "House Signature — Moroccan Woodwork", href: "#service-12" },
+];
+
 export default function Footer() {
   const [showServices, setShowServices] = useState(false);
 
@@ -32,7 +47,6 @@ export default function Footer() {
             >
               <Instagram size={40} />
             </a>
-            
             <a
               href="https://wa.me/17035086812"
               target="_blank"
@@ -54,7 +68,7 @@ export default function Footer() {
             Home
           </button>
 
-          {/* Services avec sous-menu */}
+          {/* Services Dropdown */}
           <div className="relative">
             <button
               onClick={() => setShowServices(!showServices)}
@@ -63,59 +77,34 @@ export default function Footer() {
               Services
               <ChevronDown
                 size={18}
-                className={`ml-1 transition-transform duration-300 ${showServices ? "rotate-180 text-[#f9e65c]" : ""
-                  }`}
+                className={`ml-1 transition-transform duration-300 ${
+                  showServices ? "rotate-180 text-[#f9e65c]" : ""
+                }`}
               />
-            </button>
-            <button
-              onClick={() => handleScroll("#interiors")}
-              className="text-left hover:text-[#f9e65c] transition-colors"
-            >
-              What We Do
             </button>
             {showServices && (
               <div className="ml-3 mt-2 flex flex-col space-y-1 bg-[#1a1a1a]/90 p-2 rounded-lg border border-[#f9e65c33] shadow-lg">
-                <button
-                  onClick={() => handleScroll("#service-1")}
-                  className="text-sm text-gray-300 hover:text-[#f9e65c] text-left transition-colors"
-                >
-                  Luxury Custom Home Design
-                </button>
-                <button
-                  onClick={() => handleScroll("#service-2")}
-                  className="text-sm text-gray-300 hover:text-[#f9e65c] text-left transition-colors"
-                >
-                  Initial Design Consultation
-                </button>
-                <button
-                  onClick={() => handleScroll("#service-3")}
-                  className="text-sm text-gray-300 hover:text-[#f9e65c] text-left transition-colors"
-                >
-                  Interior Virtual Design
-                </button>
-                <button
-                  onClick={() => handleScroll("#service-4")}
-                  className="text-sm text-gray-300 hover:text-[#f9e65c] text-left transition-colors"
-                >
-                  Feature Wall Design
-                </button>
-                <button
-                  onClick={() => handleScroll("#service-5")}
-                  className="text-sm text-gray-300 hover:text-[#f9e65c] text-left transition-colors"
-                >
-                  Outdoor Design
-                </button>
+                {services.map((service) => (
+                  <button
+                    key={service.href}
+                    onClick={() => handleScroll(service.href)}
+                    className="text-sm text-gray-300 hover:text-[#f9e65c] text-left transition-colors"
+                  >
+                    {service.label}
+                  </button>
+                ))}
               </div>
             )}
           </div>
+
           <button
             onClick={() => handleScroll("#HouseSignature")}
             className="text-left hover:text-[#f9e65c] transition-colors"
           >
-           House Signature
+            House Signature
           </button>
 
-<button
+          <button
             onClick={() => handleScroll("#shop-art")}
             className="text-left hover:text-[#f9e65c] transition-colors"
           >
