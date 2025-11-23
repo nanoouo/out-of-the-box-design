@@ -39,7 +39,7 @@ Luxury Custom Home Design — Where Vision Meets Architectural Artistry
 
 Our luxury custom home design service transforms your ideas into timeless living spaces tailored to your lifestyle. Every project begins with a deep understanding of your aesthetic, functional needs, and the way you live.
 
-From concept sketches to final architectural plans, we ensure every element — proportions, materials, light, and flow — harmonizes beautifully.
+From concept sketches to final architectural plans, we ensure every element proportions, materials, light, and flow harmonizes beautifully.
 
 Our design process includes:
 • Personalized concept development
@@ -51,7 +51,7 @@ Our design process includes:
 
 The result: a one-of-a-kind residence that embodies your vision and elevates everyday living into an experience of artful comfort.
 `,
-    video: "/commercial1.mp4",
+    video: "/lchd.mp4",
 
     features: ["Full custom architecture", "Luxury material selection"],
   },
@@ -64,7 +64,7 @@ The result: a one-of-a-kind residence that embodies your vision and elevates eve
     desc: `
 Initial Design Consultation — Your First Step Toward a Refined Home
 
-Our initial design consultation is a comprehensive introduction to your project and our design philosophy. During this session, we explore your goals, preferences, and the unique character of your space — whether it’s a new build, renovation, or full-scale interior design.
+Our initial design consultation is a comprehensive introduction to your project and our design philosophy. During this session, we explore your goals, preferences, and the unique character of your space whether it’s a new build, renovation, or full-scale interior design.
 
 What’s included:
 • In-depth conversation about your design vision
@@ -74,7 +74,7 @@ What’s included:
 
 Following the consultation, you’ll receive a tailored proposal outlining how we can bring your dream home to life with our bespoke design approach. (Consultations are available in-person or virtually.)
 `,
-    video: "/videos/consultation.mp4",
+    video: "/idc.mp4",
     features: ["Vision analysis", "Design roadmapping"],
   },
 
@@ -86,7 +86,7 @@ Following the consultation, you’ll receive a tailored proposal outlining how w
     desc: `
 Interior Virtual Design — Luxury Design, Delivered Remotely
 
-Our virtual design service offers a fully personalized interior experience from anywhere in the world. We provide concept boards, furniture selections, finish palettes, and styling recommendations — all tailored to your space and budget.
+Our virtual design service offers a fully personalized interior experience from anywhere in the world. We provide concept boards, furniture selections, finish palettes, and styling recommendations all tailored to your space and budget.
 
 You’ll receive a complete design package including:
 • Concept boards
@@ -98,7 +98,7 @@ You’ll receive a complete design package including:
 
 This allows you to execute the design at your own pace with confidence and clarity.
 `,
-    video: "/videos/virtual.mp4",
+    video: "/ivd.mp4",
     features: ["3D visualizations", "Concept + moodboard"],
   },
 
@@ -110,7 +110,7 @@ This allows you to execute the design at your own pace with confidence and clari
     desc: `
 Feature Wall Design — A Signature Statement for Any Room
 
-A feature wall transforms any room into a work of art. We create custom-designed wall treatments using luxury materials — from bespoke millwork and natural stone to textured finishes and custom panels.
+A feature wall transforms any room into a work of art. We create custom-designed wall treatments using luxury materials from bespoke millwork and natural stone to textured finishes and custom panels.
 
 Each design is composed to:
 • Enhance architectural features
@@ -120,7 +120,7 @@ Each design is composed to:
 
 Your wall becomes an artistic centerpiece that elevates the entire space.
 `,
-    video: "/videos/feature-wall.mp4",
+    video: "/fwd.mp4",
     features: ["Custom patterns", "Lighting integration"],
   },
 
@@ -144,7 +144,7 @@ We source the highest-quality materials, furniture, lighting, and décor from tr
     desc: `
 Our kitchen designs combine beauty and practicality, blending luxurious materials with smart layouts tailored to your lifestyle.
 `,
-    video: "/videos/kitchen.mp4",
+    video: "/kd.mp4",
     features: ["Custom cabinetry", "Lighting & material selection"],
   },
 
@@ -156,7 +156,7 @@ Our kitchen designs combine beauty and practicality, blending luxurious material
     desc: `
 We transform bathrooms into refined spaces of relaxation, featuring premium fixtures, balanced lighting, and spa-inspired concepts.
 `,
-    video: "/videos/bathroom.mp4",
+    video: "/bd.mp4",
     features: ["Marble finishes", "Modern spa concepts"],
   },
 
@@ -168,7 +168,7 @@ We transform bathrooms into refined spaces of relaxation, featuring premium fixt
     desc: `
 We create sophisticated closets with custom shelving, elegant lighting, and premium finishes for an elevated daily experience.
 `,
-    video: "/videos/closet.mp4",
+    video: "/wcd.mp4",
     features: ["Custom systems", "Material harmony"],
   },
 
@@ -178,9 +178,9 @@ We create sophisticated closets with custom shelving, elegant lighting, and prem
     title: "Other Areas",
     subtitle: "Luxury Across Every Corner of Your Home",
     desc: `
-We design every corner of your home—lounges, foyers, great rooms, bars, offices—with harmony, flow, and refined aesthetics.
+We design every corner of your home lounges, foyers, great rooms, bars, offices with harmony, flow, and refined aesthetics.
 `,
-    video: "/videos/other.mp4",
+    video: "/oa.mp4",
     features: [
       "Office design",
       "Ballroom design",
@@ -196,9 +196,9 @@ We design every corner of your home—lounges, foyers, great rooms, bars, office
     title: "Outdoor Design",
     subtitle: "Beautiful Living Beyond Your Walls",
     desc: `
-We create serene, elegant outdoor environments that connect architecture with nature — gardens, terraces, outdoor lounges, and more.
+We create serene, elegant outdoor environments that connect architecture with nature gardens, terraces, outdoor lounges, and more.
     `,
-    video: "/videos/outdoor.mp4",
+    video: "/od.mp4",
     features: ["Landscape design", "Lighting & seating"],
   },
 
@@ -277,6 +277,19 @@ function ServiceCard({ service, reverse, animate }) {
   const y = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
   const [expanded, setExpanded] = useState(false);
 
+  // Format multi-line description
+  function formatDesc(text) {
+    return text
+      .trim()
+      .split("\n")
+      .filter((line) => line.trim() !== "")
+      .map((line, i) => (
+        <p key={i} className="mb-3 text-gray-300 leading-relaxed">
+          {line.trim()}
+        </p>
+      ));
+  }
+
   return (
     <motion.div
       ref={ref}
@@ -289,26 +302,24 @@ function ServiceCard({ service, reverse, animate }) {
     >
       {/* VIDEO */}
       <motion.div
-  style={{ y }}
-  whileHover={{ scale: 1.02 }}
-  transition={{ type: "spring", stiffness: 100, damping: 12 }}
-  className="service-media h-full lg: rounded-3xl overflow-hidden shadow-[0_0_25px_rgba(232,229,109,0.1)] relative"
->
+        style={{ y }}
+        whileHover={{ scale: 1.02 }}
+        transition={{ type: "spring", stiffness: 100, damping: 12 }}
+        className="service-media h-full rounded-3xl overflow-hidden shadow-[0_0_25px_rgba(232,229,109,0.1)] relative"
+      >
+        <video
+          src={service.video}
+          controls
+          autoPlay
+          loop
+          muted
+          poster={service.poster}
+          className="h-full w-auto object-cover rounded-3xl"
+          style={{ maxHeight: "550px" }}
+        />
+      </motion.div>
 
-  <video
-  src={service.video}
-  controls
-  autoPlay
-  loop
-  muted
-  poster={service.poster}
-  className="h-full w-auto object-cover rounded-3xl"
-  style={{ maxHeight: "550px" }} // optionnel si tu veux limiter la hauteur
-/>
-
-</motion.div>
-
-      {/* TEXTE */}
+      {/* TEXT */}
       <div className="w-full lg:w-1/2 space-y-4 text-center lg:text-left">
         <div className="flex justify-center lg:justify-start items-center gap-4">
           <div className="bg-[#ffffff0d] text-[#e8e56d] rounded-full w-16 h-16 flex items-center justify-center shadow-md shadow-[#e8e56d44]">
@@ -319,12 +330,12 @@ function ServiceCard({ service, reverse, animate }) {
 
         <h4 className="text-lg italic text-gray-300">{service.subtitle}</h4>
 
-        {/* Description avec line clamp */}
-        <p className={`text-gray-300 leading-relaxed ${expanded ? "" : "line-clamp-3"}`}>
-          {service.desc}
-        </p>
+        {/* Description formatted */}
+        <div className={`${expanded ? "" : "line-clamp-3"}`}>
+          {formatDesc(service.desc)}
+        </div>
 
-        {/* Bouton Learn More */}
+        {/* Learn more */}
         {service.desc.length > 120 && (
           <button
             onClick={() => setExpanded(!expanded)}

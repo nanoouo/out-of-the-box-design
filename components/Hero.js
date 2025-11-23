@@ -88,7 +88,7 @@ export default function Hero() {
                 <Image
                   src="/logooff.png"
                   alt="Out of the Box Design Studio"
-                  width={400}
+                  width={350}
                   height={240}
                   priority
                   className="mx-auto drop-shadow-2xl"

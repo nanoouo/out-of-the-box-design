@@ -35,7 +35,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
         {/* === LOGO & DESCRIPTION === */}
         <div className="flex flex-col space-y-4">
-          <h2 className="text-2xl font-bold text-[#f9e65c]">Out of the Box Design</h2>
+          <h2 className="text-2xl font-bold text-[#f9e65c]">Out of the Box Design Studio</h2>
           <p className="text-gray-400">
             Creating spaces and experiences that reflect your personality and style.
           </p>
@@ -101,7 +101,7 @@ export default function Footer() {
             onClick={() => handleScroll("#HouseSignature")}
             className="text-left hover:text-[#f9e65c] transition-colors"
           >
-            House Signature
+             Our House Signature
           </button>
 
           <button
