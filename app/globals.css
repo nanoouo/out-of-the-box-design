@@ -1,11 +1,13 @@
-/* ==== IMPORTS (MUST BE FIRST) ==== */
-@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@300;400;500;600&family=Aboreto&family=Dorsa&display=swap');
+/* ==== IMPORTS EN PREMIER OBLIGATOIREMENT ==== */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Poppins:wght@300;400;500&display=swap');
 @import "tailwindcss";
 @import "leaflet/dist/leaflet.css";
 @import "slick-carousel/slick/slick.css";
 @import "slick-carousel/slick/slick-theme.css";
 
-/* ==== MAIN VARIABLES ==== */
+/* ==== LE RESTE DU CSS ENSUITE ==== */
+
+/* === Variables principales === */
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -18,13 +20,11 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  /* Fonts */
-  --font-serif: "Bodoni Moda", serif;     /* Elegant headings */
-  --font-deco: "Aboreto", cursive;        /* Luxury decorative subtitles */
-  --font-thin: "Dorsa", sans-serif;       /* Ultra-thin (logo, large titles) */
-  --font-sans: "Poppins", system-ui, sans-serif; /* Standard body text */
+  /* Polices */
+  --font-serif: "Cormorant Garamond", serif; /* STYLE ÉLÉGANT TYPE IMAGE */
+  --font-sans: "Poppins", system-ui, sans-serif;
 
-  /* Shadows */
+  /* Ombres */
   --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.15);
   --shadow-strong: 0 8px 30px rgba(0, 0, 0, 0.25);
 }
@@ -36,7 +36,7 @@
   }
 }
 
-/* ==== BASE ==== */
+/* === Base === */
 body {
   background-color: var(--color-background);
   color: inherit;
@@ -48,9 +48,9 @@ body {
   transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-/* ==== HEADINGS ==== */
+/* === Titres élégants (style proche de ton image) === */
 h1, h2, h3, h4 {
-  font-family: var(--font-serif); /* Bodoni Moda */
+  font-family: var(--font-serif);
   font-weight: 400;
   letter-spacing: -0.02em;
   color: var(--offwhite);
@@ -60,7 +60,7 @@ h1, h2, h3, h4 {
 h1 {
   font-size: clamp(2rem, 4vw, 3.5rem);
   color: var(--gold);
-  font-weight: 300;
+  font-weight: 300; /* très élégant, fin, comme dans l’image */
 }
 
 h2 {
@@ -76,7 +76,7 @@ h4 {
   font-size: clamp(1.2rem, 1.5vw, 1.4rem);
 }
 
-/* ==== TEXT ==== */
+/* === Texte === */
 p {
   font-family: var(--font-sans);
   font-size: clamp(1rem, 1.1vw, 1.1rem);
@@ -84,7 +84,7 @@ p {
   margin-bottom: 1.2em;
 }
 
-/* ==== LINKS ==== */
+/* === Liens === */
 a {
   color: var(--gold);
   text-decoration: none;
@@ -95,7 +95,7 @@ a:hover {
   opacity: 0.9;
 }
 
-/* ==== SHADOWS ==== */
+/* === Ombres === */
 .shadow-soft {
   box-shadow: var(--shadow-soft);
 }
@@ -103,7 +103,7 @@ a:hover {
   box-shadow: var(--shadow-strong);
 }
 
-/* ==== ANIMATION ==== */
+/* === Animation === */
 @keyframes float {
   0% { transform: translateY(0); }
   50% { transform: translateY(-6px); }
@@ -113,7 +113,7 @@ a:hover {
   animation: float 3s ease-in-out infinite;
 }
 
-/* ==== SLICK CAROUSEL ==== */
+/* === Slick Carousel === */
 .slick-slider {
   position: relative;
 }
@@ -129,7 +129,7 @@ a:hover {
   transform: scale(1.02);
 }
 
-/* ==== CUSTOM DOTS ==== */
+/* === Dots personnalisés === */
 .slick-dots {
   bottom: 20px !important;
   display: flex !important;
@@ -164,7 +164,7 @@ a:hover {
   box-shadow: 0 0 12px rgba(197, 164, 109, 0.7);
 }
 
-/* ==== RESPONSIVE DOTS ==== */
+/* === Responsive Dots === */
 @media (max-width: 768px) {
   .slick-dots li div {
     width: 9px;
@@ -175,7 +175,7 @@ a:hover {
   }
 }
 
-/* ==== GOLDEN GLOW AROUND CAROUSEL ==== */
+/* === Effet doré autour du carrousel === */
 .carousel-wrapper {
   position: relative;
   border-radius: 1.5rem;
@@ -193,12 +193,10 @@ a:hover {
   );
   pointer-events: none;
 }
-
-/* ==== VIDEO ==== */
 .video-wrapper {
   position: relative;
   width: 100%;
-  padding-top: 56.25%;
+  padding-top: 56.25%; /* ratio horizontal 16:9 */
   background: black;
   overflow: hidden;
 }
@@ -214,6 +212,6 @@ a:hover {
 
 @media (max-width: 640px) {
   .video-wrapper {
-    padding-top: 75%;
+    padding-top: 75%; /* ratio adapté au mobile */
   }
 }
