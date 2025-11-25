@@ -11,6 +11,8 @@ import Footer from "@/components/Footer";
 import ServiceAreas from "@/components/ServiceAreas"; 
 import HouseSignature from "@/components/HouseSignature";// ✅ import your ServiceAreas component
 import ShopOurArt from "@/components/ShopOurArt"; 
+import CertificateSection from "@/components/CertificateSection";
+
 
 
 export default function HomePage() {
@@ -29,6 +31,8 @@ export default function HomePage() {
         <ServiceAreas />
         <Testimonials />
         <Contact />
+        <CertificateSection />
+
         <Footer />
       </main>
     </>

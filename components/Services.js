@@ -202,29 +202,7 @@ We create serene, elegant outdoor environments that connect architecture with na
     features: ["Landscape design", "Lighting & seating"],
   },
 
-  {
-    id: 11,
-    icon: <Layers size={42} />,
-    title: "House Signature — Moroccan Gypsum",
-    subtitle: "Authentic Moroccan Handmade Gypsum",
-    desc: `
-We offer bespoke Moroccan carved gypsum, adding character, tradition, and artistry to your interiors.
-`,
-    video: "/videos/gypsum.mp4",
-    features: ["Traditional carving", "Custom patterns"],
-  },
-
-  {
-    id: 12,
-    icon: <Layers size={42} />,
-    title: "House Signature — Moroccan Woodwork",
-    subtitle: "Handmade Woodwork with Timeless Detail",
-    desc: `
-Hand-crafted Moroccan woodwork with rich textures, intricate carving, and timeless authenticity.
-`,
-    video: "/videos/woodwork.mp4",
-    features: ["Hand-carved details", "Premium woods"],
-  },
+  
 ];
 
 

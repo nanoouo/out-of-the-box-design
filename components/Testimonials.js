@@ -112,7 +112,7 @@ export default function Testimonials() {
         animate={animate ? { opacity: 1, y: 0 } : { opacity: 0 }}
         transition={{ delay: 0.2, duration: 0.6 }}
       >
-        What Clients Say About Us!
+        Their words  Our reputation
       </motion.h2>
 
       <motion.hr

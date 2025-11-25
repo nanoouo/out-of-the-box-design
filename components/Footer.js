@@ -14,8 +14,7 @@ const services = [
   { label: "Walk-In Closet Design", href: "#service-8" },
   { label: "Other Areas", href: "#service-9" },
   { label: "Outdoor Design", href: "#service-10" },
-  { label: "House Signature — Moroccan Gypsum", href: "#service-11" },
-  { label: "House Signature — Moroccan Woodwork", href: "#service-12" },
+  
 ];
 
 export default function Footer() {

@@ -25,8 +25,7 @@ export default function MobileMenu({ open, onClose }) {
     { label: "Walk-In Closet Design", href: "#service-8" },
     { label: "Other Areas", href: "#service-9" },
     { label: "Outdoor Design", href: "#service-10" },
-    { label: "Moroccan Handmade Gypsum", href: "#service-11" },
-    { label: "Moroccan Handmade Woodwork", href: "#service-12" },
+   
   ],
 },
 
