@@ -46,7 +46,7 @@ export default function About() {
 
           <div className="relative w-64 h-80 sm:w-80 sm:h-[440px] rounded-2xl overflow-hidden border-4 border-[#c5a46d] shadow-[0_8px_30px_rgba(0,0,0,0.6)]">
             <Image
-              src="/profilee-about.jpeg"
+              src="/profile.jpeg"
               alt="Founder Portrait"
               fill
               className="object-cover object-center transition-all duration-700 hover:scale-105"
