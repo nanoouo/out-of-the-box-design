@@ -245,6 +245,7 @@ We create serene, elegant outdoor environments that connect architecture with na
 /* ------------------------------ ServiceCard --------------------------------*/
 /* -------------------------------------------------------------------------- */
 
+
 function ServiceCard({ service, reverse, animate }) {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -256,8 +257,8 @@ function ServiceCard({ service, reverse, animate }) {
   const [expanded, setExpanded] = useState(false);
 
   // Format multi-line description
-  function formatDesc(text) {
-    return text
+  const formatDesc = (text) =>
+    text
       .trim()
       .split("\n")
       .filter((line) => line.trim() !== "")
@@ -266,7 +267,6 @@ function ServiceCard({ service, reverse, animate }) {
           {line.trim()}
         </p>
       ));
-  }
 
   return (
     <motion.div
@@ -275,7 +275,7 @@ function ServiceCard({ service, reverse, animate }) {
         reverse ? "lg:flex-row-reverse" : ""
       }`}
       initial={{ opacity: 0, y: 60 }}
-      animate={animate ? { opacity: 1, y: 0 } : { opacity: 0 }}
+      animate={animate ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.9 }}
     >
       {/* VIDEO */}
@@ -283,7 +283,7 @@ function ServiceCard({ service, reverse, animate }) {
         style={{ y }}
         whileHover={{ scale: 1.02 }}
         transition={{ type: "spring", stiffness: 100, damping: 12 }}
-        className="service-media h-full rounded-3xl overflow-hidden shadow-[0_0_25px_rgba(232,229,109,0.1)] relative"
+        className="service-media rounded-3xl overflow-hidden shadow-[0_0_25px_rgba(232,229,109,0.1)] relative"
       >
         <video
           src={service.video}
@@ -292,8 +292,12 @@ function ServiceCard({ service, reverse, animate }) {
           loop
           muted
           poster={service.poster}
-          className="h-full w-auto object-cover rounded-3xl"
-          style={{ maxHeight: "550px" }}
+          className="rounded-3xl object-contain bg-black"
+          style={{
+            height: "100%",       // Mode height-first
+            maxHeight: "550px",
+            width: "auto",
+          }}
         />
       </motion.div>
 
@@ -303,13 +307,15 @@ function ServiceCard({ service, reverse, animate }) {
           <div className="bg-[#ffffff0d] text-[#e8e56d] rounded-full w-16 h-16 flex items-center justify-center shadow-md shadow-[#e8e56d44]">
             {service.icon}
           </div>
-          <h3 className="text-2xl font-semibold text-[#e8e56d]">{service.title}</h3>
+          <h3 className="text-2xl font-semibold text-[#e8e56d]">
+            {service.title}
+          </h3>
         </div>
 
         <h4 className="text-lg italic text-gray-300">{service.subtitle}</h4>
 
         {/* Description formatted */}
-        <div className={`${expanded ? "" : "line-clamp-3"}`}>
+        <div className={expanded ? "" : "line-clamp-3"}>
           {formatDesc(service.desc)}
         </div>
 
@@ -332,3 +338,5 @@ function ServiceCard({ service, reverse, animate }) {
     </motion.div>
   );
 }
+
+
