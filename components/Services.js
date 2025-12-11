@@ -120,7 +120,7 @@ Each design is composed to:
 
 Your wall becomes an artistic centerpiece that elevates the entire space.
 `,
-    video: "/fwd.mp4",
+    video: "/wall.mp4",
     features: ["Custom patterns", "Lighting integration"],
   },
 
