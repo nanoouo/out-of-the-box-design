@@ -74,7 +74,7 @@ What’s included:
 
 Following the consultation, you’ll receive a tailored proposal outlining how we can bring your dream home to life with our bespoke design approach. (Consultations are available in-person or virtually.)
 `,
-    video: "/initialdesign.mp4",
+    video: "https://player.cloudinary.com/embed/?cloud_name=dqyf67kgs&public_id=initialdesign_z6ytri&profile=cld-default",
     features: ["Vision analysis", "Design roadmapping"],
   },
 
