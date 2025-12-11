@@ -51,7 +51,7 @@ Our design process includes:
 
 The result: a one-of-a-kind residence that embodies your vision and elevates everyday living into an experience of artful comfort.
 `,
-    video: "/lchd.mp4",
+    video: "/luxurycustomhome.mp4",
 
     features: ["Full custom architecture", "Luxury material selection"],
   },
@@ -74,7 +74,7 @@ What’s included:
 
 Following the consultation, you’ll receive a tailored proposal outlining how we can bring your dream home to life with our bespoke design approach. (Consultations are available in-person or virtually.)
 `,
-    video: "/idc.mp4",
+    video: "/initialdesign.mp4",
     features: ["Vision analysis", "Design roadmapping"],
   },
 
@@ -98,7 +98,7 @@ You’ll receive a complete design package including:
 
 This allows you to execute the design at your own pace with confidence and clarity.
 `,
-    video: "/ivd.mp4",
+    video: "/Interiorvirtual.mp4",
     features: ["3D visualizations", "Concept + moodboard"],
   },
 
@@ -120,7 +120,7 @@ Each design is composed to:
 
 Your wall becomes an artistic centerpiece that elevates the entire space.
 `,
-    video: "/fwd.mp4",
+    video: "/wal.mp4",
     features: ["Custom patterns", "Lighting integration"],
   },
 
@@ -132,7 +132,7 @@ Your wall becomes an artistic centerpiece that elevates the entire space.
     desc: `
 We source the highest-quality materials, furniture, lighting, and décor from trusted global suppliers to bring your project to life. Every item is selected with precision to match your design vision.
 `,
-    video: "/videos/sourcing.mp4",
+    video: "/sourcing.mp4",
     features: ["Vendor coordination", "Material acquisition"],
   },
 
@@ -144,7 +144,7 @@ We source the highest-quality materials, furniture, lighting, and décor from tr
     desc: `
 Our kitchen designs combine beauty and practicality, blending luxurious materials with smart layouts tailored to your lifestyle.
 `,
-    video: "/kd.mp4",
+    video: "/kit.mp4",
     features: ["Custom cabinetry", "Lighting & material selection"],
   },
 
@@ -156,7 +156,7 @@ Our kitchen designs combine beauty and practicality, blending luxurious material
     desc: `
 We transform bathrooms into refined spaces of relaxation, featuring premium fixtures, balanced lighting, and spa-inspired concepts.
 `,
-    video: "/bd.mp4",
+    video: "/bath.mp4",
     features: ["Marble finishes", "Modern spa concepts"],
   },
 
@@ -168,19 +168,19 @@ We transform bathrooms into refined spaces of relaxation, featuring premium fixt
     desc: `
 We create sophisticated closets with custom shelving, elegant lighting, and premium finishes for an elevated daily experience.
 `,
-    video: "/wcd.mp4",
+    video: "/walking.mp4",
     features: ["Custom systems", "Material harmony"],
   },
 
   {
     id: 9,
     icon: <Grid size={42} />,
-    title: "Other Areas",
+    title: "other Areas",
     subtitle: "Luxury Across Every Corner of Your Home",
     desc: `
 We design every corner of your home lounges, foyers, great rooms, bars, offices with harmony, flow, and refined aesthetics.
 `,
-    video: "/oa.mp4",
+    video: "/other.mp4",
     features: [
       "Office design",
       "Ballroom design",
@@ -198,7 +198,7 @@ We design every corner of your home lounges, foyers, great rooms, bars, offices 
     desc: `
 We create serene, elegant outdoor environments that connect architecture with nature gardens, terraces, outdoor lounges, and more.
     `,
-    video: "/od.mp4",
+    video: "/outdoor.mp4",
     features: ["Landscape design", "Lighting & seating"],
   },
 

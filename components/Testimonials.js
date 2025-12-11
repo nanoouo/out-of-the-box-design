@@ -57,8 +57,7 @@ export default function Testimonials() {
 
   const reviewVideos = [
     "/rv1.mp4",
-    "/ps.mp4",
-    "/videos/review3.mp4",
+    
   ];
 
   const handleVideoEnd = () => {
