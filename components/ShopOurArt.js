@@ -27,7 +27,7 @@ export default function ShopOurArt() {
           "
         >
           <video
-            src="/pres.mp4"
+            src="/video/pres.mp4"
             controls
             autoPlay
             muted
@@ -55,7 +55,7 @@ export default function ShopOurArt() {
         >
           <div className="relative w-full" style={{ paddingTop: "56.25%" }}>
             <video
-              src="/pres.mp4"
+              src="/video/pres.mp4"
               controls
               autoPlay
               muted

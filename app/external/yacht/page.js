@@ -8,7 +8,7 @@ export default function YachtPage() {
     <main className="min-h-screen bg-gradient-to-b from-[#111] via-[#1a1a1a] to-[#222] text-white px-6 sm:px-10 py-24">
       <div className="max-w-5xl mx-auto pt-12">
         <motion.video
-          src="/yacht.mp4"
+          src="/video/yacht.mp4"
           autoPlay
           loop
           muted

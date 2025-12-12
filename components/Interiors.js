@@ -62,21 +62,21 @@ export default function Interiors() {
   const sections = [
     {
       slug: "external/residential",
-      video: "/residential.mp4",
+      video: "/video/residential.mp4",
       title: "Residential Interiors",
       shortDescription:
         "Your home is your sanctuary — it should not only be peaceful, but also a reflection of your personality, filled with memories and aspirations.",
     },
     {
       slug: "external/commercial",
-      video: "/commercial1.mp4",
+      video: "/video/commercial1.mp4",
       title: "Commercial Interiors",
       shortDescription:
         "Every commercial space should reflect the brand’s identity and purpose. We interpret our clients’ business values to design functional and visually captivating environments.",
     },
     {
       slug: "external/yacht",
-      video: "/yacht.mp4",
+      video: "/video/yacht.mp4",
       title: "Luxury Yacht Design",
       shortDescription:
         "Luxury Living, Redefined at Sea. Our yacht design combines craftsmanship, innovation, and artistry — tailored to your lifestyle and vessel’s unique character.",

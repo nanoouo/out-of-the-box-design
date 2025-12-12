@@ -56,7 +56,7 @@ export default function Testimonials() {
   const allTestimonials = [...testimonials, ...submittedTestimonials];
 
   const reviewVideos = [
-    "/rv1.mp4",
+    "/video/rv1.mp4",
     
   ];
 
