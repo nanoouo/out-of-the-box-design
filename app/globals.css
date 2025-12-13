@@ -217,3 +217,13 @@ a:hover {
     padding-top: 75%;
   }
 }
+.input {
+  @apply px-4 py-3 rounded-lg bg-[#222] 
+  border border-gray-600 
+  text-white 
+  placeholder-gray-400
+  focus:border-[#f9e65c] 
+  focus:ring-1 focus:ring-[#f9e65c]
+  focus:outline-none 
+  transition-all duration-300;
+}
