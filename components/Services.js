@@ -1,34 +1,14 @@
 "use client";
 
 import React, { useRef, useState } from "react";
-
 import { motion, useTransform, useScroll } from "framer-motion";
-import {
-  CookingPot,
-  Bath,
-  Layers,
-  Grid,
-  Sun,
-  Utensils,
-  Warehouse,
-  Package,
-  Search,
-} from "lucide-react";
+import { Layers, Grid, Sun, Utensils, Warehouse, Package, Bath, Search } from "lucide-react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
-
-/**
- * Services - composant principal
- * - 12 services
- * - chaque service a: id, icon, title, subtitle, desc, video (chemin), features[]
- *
- * NOTE: j'utilise le chemin local de ton image uploadée comme poster pour le 1er service:
- * "/mnt/data/WhatsApp Image 2025-11-20 at 4.27.30 PM.jpeg"
- */
 
 export default function Services() {
   const { sectionRef, animate } = useScrollAnimation(0.1);
 
-const services = [
+ const services = [
   {
     id: 1,
     icon: <Layers size={42} />,
@@ -205,7 +185,6 @@ We create serene, elegant outdoor environments that connect architecture with na
   
 ];
 
-
   return (
     <section
       id="services"
@@ -230,9 +209,9 @@ We create serene, elegant outdoor environments that connect architecture with na
         Bespoke Design. Architectural Precision. Refined Living.
       </motion.p>
 
-      <div className="space-y-32 max-w-7xl mx-auto">
+      <div className="space-y-20 max-w-7xl mx-auto">
         {services.map((s, i) => (
-          <div id={`service-${s.id}`} key={s.id} className="scroll-mt-32">
+          <div key={s.id} id={`service-${s.id}`} className="scroll-mt-32">
             <ServiceCard service={s} reverse={i % 2 !== 0} animate={animate} />
           </div>
         ))}
@@ -240,11 +219,6 @@ We create serene, elegant outdoor environments that connect architecture with na
     </section>
   );
 }
-
-/* -------------------------------------------------------------------------- */
-/* ------------------------------ ServiceCard --------------------------------*/
-/* -------------------------------------------------------------------------- */
-
 
 function ServiceCard({ service, reverse, animate }) {
   const ref = useRef(null);
@@ -256,7 +230,6 @@ function ServiceCard({ service, reverse, animate }) {
   const y = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
   const [expanded, setExpanded] = useState(false);
 
-  // Format multi-line description
   const formatDesc = (text) =>
     text
       .trim()
@@ -271,7 +244,7 @@ function ServiceCard({ service, reverse, animate }) {
   return (
     <motion.div
       ref={ref}
-      className={`flex flex-col lg:flex-row items-center gap-12 ${
+      className={`flex flex-col lg:flex-row items-center gap-8 lg:gap-12 ${
         reverse ? "lg:flex-row-reverse" : ""
       }`}
       initial={{ opacity: 0, y: 60 }}
@@ -283,7 +256,7 @@ function ServiceCard({ service, reverse, animate }) {
         style={{ y }}
         whileHover={{ scale: 1.02 }}
         transition={{ type: "spring", stiffness: 100, damping: 12 }}
-        className="service-media rounded-3xl overflow-hidden shadow-[0_0_25px_rgba(232,229,109,0.1)] relative"
+        className="service-media w-full lg:w-1/2 rounded-2xl overflow-hidden shadow-lg relative"
       >
         <video
           src={service.video}
@@ -291,13 +264,7 @@ function ServiceCard({ service, reverse, animate }) {
           autoPlay
           loop
           muted
-          poster={service.poster}
-          className="rounded-3xl object-contain bg-black"
-          style={{
-            height: "100%",       // Mode height-first
-            maxHeight: "550px",
-            width: "auto",
-          }}
+          className="w-full h-auto max-h-[350px] lg:max-h-[500px] object-cover rounded-2xl bg-black"
         />
       </motion.div>
 
@@ -307,19 +274,13 @@ function ServiceCard({ service, reverse, animate }) {
           <div className="bg-[#ffffff0d] text-[#e8e56d] rounded-full w-16 h-16 flex items-center justify-center shadow-md shadow-[#e8e56d44]">
             {service.icon}
           </div>
-          <h3 className="text-2xl font-semibold text-[#e8e56d]">
-            {service.title}
-          </h3>
+          <h3 className="text-2xl font-semibold text-[#e8e56d]">{service.title}</h3>
         </div>
 
         <h4 className="text-lg italic text-gray-300">{service.subtitle}</h4>
 
-        {/* Description formatted */}
-        <div className={expanded ? "" : "line-clamp-3"}>
-          {formatDesc(service.desc)}
-        </div>
+        <div className={expanded ? "" : "line-clamp-3"}>{formatDesc(service.desc)}</div>
 
-        {/* Learn more */}
         {service.desc.length > 120 && (
           <button
             onClick={() => setExpanded(!expanded)}
@@ -338,5 +299,3 @@ function ServiceCard({ service, reverse, animate }) {
     </motion.div>
   );
 }
-
-
