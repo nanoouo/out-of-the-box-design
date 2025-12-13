@@ -29,14 +29,14 @@ export default function Head() {
       <meta property="og:title" content="Out of the Box Design Studio | Luxury Interior & Architectural Services" />
       <meta property="og:description" content="Transform your home with our bespoke architectural and interior design services. Personalized luxury solutions tailored to your lifestyle." />
       <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://www.yoursite.com" />
-      <meta property="og:image" content="https://www.yoursite.com/og-image.jpg" />
+      <meta property="og:url" content="https://www.outoftheboxdesignstudio.website" />
+      <meta property="og:image" content="https://www.outoftheboxdesignstudio.website/og-image.jpg" />
 
       {/* Twitter Cards */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content="Out of the Box Design Studio | Luxury Interior & Architectural Services" />
       <meta name="twitter:description" content="Transform your home with our bespoke architectural and interior design services. Personalized luxury solutions tailored to your lifestyle." />
-      <meta name="twitter:image" content="https://www.yoursite.com/og-image.jpg" />
+      <meta name="twitter:image" content="https://www.outoftheboxdesignstudio.website/og-image.jpg" />
     </>
   );
 }
