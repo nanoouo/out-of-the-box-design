@@ -6,7 +6,7 @@ import { MessageCircle } from "lucide-react";
 const artworks = [
   {
     title: "Echoes Of Power",
-    price: 2400,
+    price: 7300,
     size: "24” × 36”",
     medium: "Charcoal with Acrylic on canvas",
     frontImage: "/EchoesOfPower1.jpeg",
@@ -17,7 +17,7 @@ const artworks = [
   },
   {
     title: "Weight Of Thoughts",
-    price: 2100,
+    price: 8700,
     size: "24” × 36”",
     medium: "Charcoal with Acrylic on canvas",
     frontImage: "/WeightOfThoughts1.jpeg",
