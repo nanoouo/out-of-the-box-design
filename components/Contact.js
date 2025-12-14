@@ -32,7 +32,7 @@ Project Description:
 ${formData.message}
     `);
 
-    window.location.href = `mailto:outoftheboxdesignstudio@gmail.com?subject=${encodeURIComponent(
+    window.location.href = `mailto:Fatima@outoftheboxdesign.studio?subject=${encodeURIComponent(
       formData.subject
     )}&body=${body}`;
 
@@ -203,7 +203,7 @@ ${formData.message}
 
       <div className="mt-8 text-center text-gray-400 space-y-1">
         <p>📞 +1 (703) 508-6812</p>
-        <p>✉️ outoftheboxdesignstudio@gmail.com</p>
+        <p>✉️ Fatima@outoftheboxdesign.studio </p>
       </div>
     </section>
   );
